@@ -7,9 +7,13 @@
 //SDL includes
 #include <SDL.h>
 #include <SDL_opengl.h>
-
-int main()
+//JUMA includes
+#include "JUMA_liftoff.h"
+int main(int argc, char* args[])
 {
-
+	JUMA_RenderES renderEssentials;
+	renderEssentials=initJUMA(600,600, "fuak");
+	SDL_Delay(1000);
+	return 1;
 }
 
