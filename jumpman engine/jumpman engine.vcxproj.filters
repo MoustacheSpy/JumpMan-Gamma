@@ -27,6 +27,12 @@
     <ClInclude Include="JUMA_liftoff.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="JUMA_shapes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JUMA_bitmanipulator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -37,6 +43,12 @@
     </ClCompile>
     <ClCompile Include="JUMA_liftoff.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JUMA_shapes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JUMA_bitmanipulator.cpp">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

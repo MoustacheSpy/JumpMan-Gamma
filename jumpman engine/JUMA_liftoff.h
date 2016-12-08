@@ -22,11 +22,15 @@
 
 //____________________INCLUDES_____________________________
 #include <SDL.h>
+
+//____________________STRUCTURES___________________________
 struct JUMA_RenderES {
 	SDL_Renderer *renderer;
 	SDL_Window *window;
 	SDL_GLContext glcontext;
 };
+
+//___________________PROTOTYPES____________________________
 
 JUMA_RenderES initJUMA( int width, int height, char* windowname);
 int initSDL(SDL_Renderer *&renderer, SDL_Window *&window,SDL_GLContext *glcontext,int width,int height,char* windowname);
