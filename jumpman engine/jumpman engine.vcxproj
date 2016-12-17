@@ -150,13 +150,16 @@
   <ItemGroup>
     <ClInclude Include="JUMA_bitmanipulator.h" />
     <ClInclude Include="JUMA_liftoff.h" />
+    <ClInclude Include="JUMA_shaders.h" />
     <ClInclude Include="JUMA_shapes.h" />
+    <ClInclude Include="JUMA_vertContainer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JUMA_bitmanipulator.cpp" />
     <ClCompile Include="JUMA_liftoff.cpp" />
+    <ClCompile Include="JUMA_shaders.cpp" />
     <ClCompile Include="JUMA_shapes.cpp" />
     <ClCompile Include="jumpman engine.cpp" />
     <ClCompile Include="stdafx.cpp">
