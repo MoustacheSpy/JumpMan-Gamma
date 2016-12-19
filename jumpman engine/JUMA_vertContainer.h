@@ -26,3 +26,4 @@ GLuint rectangleIndices[] = {  // Note that we start from 0!
 GLuint triangleVBO, rectangleVBO;
 GLuint rectangleVAO, triangleVAO;
 GLuint rectangleEBO;
+

@@ -1,14 +1,18 @@
-#ifndef SHADERS_H_INCLUDED
-#define SHADERS_H_INCLUDED
-#include "stdafx.h"
+#pragma once
+//____________________REFERENCES___________________________
+///Internet:
+//Making basic shaders and the standart shader class
+	//https://learnopengl.com/#!Getting-started/Shaders
 
+//____________________INCLUDES_____________________________
+#include "stdafx.h"
 #include <string>
 #include <fstream>
 #include <sstream>
 #include <iostream>
-
 #include <GL/glew.h>// Include glew to get all the required OpenGL headers
 
+//____________________CLASSES______________________________
 class JUMA_Shader
 {
 private:
@@ -24,5 +28,3 @@ public:
     void Use();
 	void recompile();
 };
-
-#endif // SHADERS_H_INCLUDED

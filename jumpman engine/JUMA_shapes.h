@@ -19,7 +19,9 @@
 //____________________INCLUDES_____________________________
 #include <GL/glew.h>
 #include "JUMA_shaders.h"
+#include "JUMA_matrices.h"
 
 //___________________PROTOTYPES____________________________
 int initShapes(unsigned int FLAGS);
-void drawRectangle(JUMA_Shader shader, float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz);
+void drawRectangle(JUMA_Shader shader,const char* modelName, float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz);
+void drawRectangle3D(JUMA_Shader shader, JUMA_Mat3DCollect collection,float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz);
