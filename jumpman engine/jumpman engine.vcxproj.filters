@@ -42,6 +42,21 @@
     <ClInclude Include="JUMA_matrices.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="JUMA_textures.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JUMA_materials.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JUMA_color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JUMA_texCol.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JUMA_animatedTextures.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -63,6 +78,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="JUMA_matrices.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JUMA_textures.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JUMA_materials.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JUMA_animatedTexture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

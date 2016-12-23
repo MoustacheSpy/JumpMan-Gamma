@@ -3,10 +3,10 @@
 //_____________________VERTEX DATA_________________________
 //---------------------2DRECTANGLE-------------------------
 GLfloat rectangleVerts[] = {
-	1.0f,  1.0f, 0.0f,  // Top Right
-	1.0f, -1.0f, 0.0f,  // Bottom Right
-	-1.0f, -1.0f, 0.0f,  // Bottom Left
-	-1.0f,  1.0f, 0.0f   // Top Left 
+	1.0f,  1.0f, 0.0f, 1.0f,1.0f, // Top Right
+	1.0f, -1.0f, 0.0f,  1.0f,0.0f,// Bottom Right
+	-1.0f, -1.0f, 0.0f, 0.0f,0.0f, // Bottom Left
+	-1.0f,  1.0f, 0.0f,  0.0f,1.0f // Top Left 
 };
 //---------------------2DTRIANGLE--------------------------
 GLfloat triangleVerts[] = {

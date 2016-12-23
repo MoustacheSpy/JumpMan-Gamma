@@ -8,5 +8,5 @@ void main()
 {
 	tempCol.x = ourColor.x +0.5;
 	tempCol.yz = ourColor.yz +0.1;
-    color = vec4(tempCol, 1.0f);
+    color = vec4(1.0f,1.0f,1.0f, 1.0f);
 };

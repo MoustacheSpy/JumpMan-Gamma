@@ -29,9 +29,10 @@ int initShapes(unsigned int FLAGS) {
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(rectangleIndices), rectangleIndices, GL_STATIC_DRAW);
 
 		///Set up VAP ( Vertex Attribute Pointer )
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)0);
 		glEnableVertexAttribArray(0);
-
+		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+		glEnableVertexAttribArray(1);
 		///Unbind buffers
 		glBindBuffer(GL_ARRAY_BUFFER, 0); // Note that this is allowed, the call to glVertexAttribPointer registered VBO as the currently bound vertex buffer object so afterwards we can safely unbind
 
@@ -148,6 +149,7 @@ void drawTriangle3D(JUMA_Shader shader, JUMA_Mat3DCollect collection, float x, f
 	}
 	shader.Use();
 	glBindVertexArray(triangleVAO);
+	
 	glUniformMatrix4fv(glGetUniformLocation(shader.Program, collection.modelName), 1, GL_FALSE, glm::value_ptr(collection.model));
 	glUniformMatrix4fv(glGetUniformLocation(shader.Program, collection.viewName), 1, GL_FALSE, glm::value_ptr(collection.proj));
 	glUniformMatrix4fv(glGetUniformLocation(shader.Program, collection.projName), 1, GL_FALSE, glm::value_ptr(collection.view));
@@ -159,7 +161,7 @@ void drawTriangle3D(JUMA_Shader shader, JUMA_Mat3DCollect collection, float x, f
 		glDisable(GL_DEPTH_TEST);
 }
 
-void drawRectangle3D(JUMA_Shader shader, JUMA_Mat3DCollect collection, float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz){
+void drawRectangle3D(JUMA_Shader shader, JUMA_material material, JUMA_Mat3DCollect collection, float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz){
 	bool changedDepth = false;
 	if (!glIsEnabled(GL_DEPTH_TEST)) {
 		glEnable(GL_DEPTH_TEST);
@@ -181,6 +183,8 @@ void drawRectangle3D(JUMA_Shader shader, JUMA_Mat3DCollect collection, float x, 
 
 	}
 	shader.Use();
+	//passing Material to shader
+	JUMA_passMatToUniforms(shader, material);
 	glBindVertexArray(rectangleVAO);
 	glUniformMatrix4fv(glGetUniformLocation(shader.Program, collection.modelName), 1, GL_FALSE, glm::value_ptr(collection.model));
 	glUniformMatrix4fv(glGetUniformLocation(shader.Program, collection.viewName), 1, GL_FALSE, glm::value_ptr(collection.proj));
