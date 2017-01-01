@@ -63,7 +63,7 @@ int main(int argc, char* args[])
 		if (keystate[SDL_SCANCODE_2])
 			z -= 0.01;
 		
-		JUMA_TexAnimation test("C:/lel", "kill");
+		
 		glm::mat4 model, view, proj;
 		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
 		proj = glm::perspective(45.0f, (float)(600 / 600), 0.1f, 100.0f);

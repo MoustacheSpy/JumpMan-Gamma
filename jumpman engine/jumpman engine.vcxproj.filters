@@ -57,6 +57,9 @@
     <ClInclude Include="JUMA_animatedTextures.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -92,5 +95,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="shaders\shaders.7z">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="textures\3.bild.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\alpha_test.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\container2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\jumpman.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
