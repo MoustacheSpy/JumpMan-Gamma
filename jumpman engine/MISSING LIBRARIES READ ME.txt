@@ -1,0 +1,9 @@
+download missing libs in a pack at moustachedevelop.bplaced.net
+I do not own any of these libraries. Please support the official libraries.
+Pack contains:
+	SDL2
+	GLM
+	SOIL
+	ASSIMP
+
+Please use nuget to install assimp since it doesnt properly function using the version included in the package.
