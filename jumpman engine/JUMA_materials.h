@@ -40,6 +40,7 @@ struct JUMA_materialFracture{
 		else enabled = true;
 		return MAT_MSG_SUCCESSFUL;
 	}
+	
 };
 
 typedef std::vector<JUMA_materialFracture> JUMA_material;

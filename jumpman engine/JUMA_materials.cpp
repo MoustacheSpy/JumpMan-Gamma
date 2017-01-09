@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "JUMA_materials.h"
+
 JUMA_materialFracture::JUMA_materialFracture( JUMA_Texture *Texture, JUMA_color Solid, char *uniformName, GLenum texchannel) {
 	
 	if (Texture == NULL) {

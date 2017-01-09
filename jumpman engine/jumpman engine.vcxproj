@@ -152,9 +152,11 @@
     <ClInclude Include="JUMA_animatedTextures.h" />
     <ClInclude Include="JUMA_bitmanipulator.h" />
     <ClInclude Include="JUMA_color.h" />
+    <ClInclude Include="JUMA_gameObject.h" />
     <ClInclude Include="JUMA_liftoff.h" />
     <ClInclude Include="JUMA_materials.h" />
     <ClInclude Include="JUMA_matrices.h" />
+    <ClInclude Include="JUMA_physics.h" />
     <ClInclude Include="JUMA_shaders.h" />
     <ClInclude Include="JUMA_shapes.h" />
     <ClInclude Include="JUMA_texCol.h" />
@@ -167,6 +169,7 @@
   <ItemGroup>
     <ClCompile Include="JUMA_animatedTexture.cpp" />
     <ClCompile Include="JUMA_bitmanipulator.cpp" />
+    <ClCompile Include="JUMA_gameObject.cpp" />
     <ClCompile Include="JUMA_liftoff.cpp" />
     <ClCompile Include="JUMA_materials.cpp" />
     <ClCompile Include="JUMA_matrices.cpp" />

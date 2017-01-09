@@ -5,28 +5,35 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
+struct  {
+	bool squareInit = false;
+	bool triangleInit = false;
+
+}initCheckerShapes;
 int initShapes(unsigned int FLAGS) {
+	vertContainer cont;
 	//read shapes from flag bitmask
 	if (checkBit(FLAGS, 0)) {
 		//initialize rectangle
 		///generate VAO
-		glGenBuffers(1, &rectangleVAO);
+		glGenBuffers(1, &cont.rectangleVAO);
 		///generate VBO 
-		glGenBuffers(1, &rectangleVBO);
+		glGenBuffers(1, &cont.rectangleVBO);
 		///generate EBO
-		glGenBuffers(1, &rectangleEBO);
+		glGenBuffers(1, &cont.rectangleEBO);
 
 		//Save Data into buffes
 		///Bind VAO
-		glBindVertexArray(rectangleVAO);
+		glBindVertexArray(cont.rectangleVAO);
 
 		///Bind VBO and BUFFER DATA into it
-		glBindBuffer(GL_ARRAY_BUFFER, rectangleVBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(rectangleVerts), rectangleVerts, GL_STATIC_DRAW);
+		glBindBuffer(GL_ARRAY_BUFFER, cont.rectangleVBO);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(cont.rectangleVerts), cont.rectangleVerts, GL_STATIC_DRAW);
 		
 		///Bind EBO and BUFFER DATA into it
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, rectangleEBO);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(rectangleIndices), rectangleIndices, GL_STATIC_DRAW);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cont.rectangleEBO);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(cont.rectangleIndices), cont.rectangleIndices, GL_STATIC_DRAW);
 
 		///Set up VAP ( Vertex Attribute Pointer )
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)0);
@@ -37,23 +44,23 @@ int initShapes(unsigned int FLAGS) {
 		glBindBuffer(GL_ARRAY_BUFFER, 0); // Note that this is allowed, the call to glVertexAttribPointer registered VBO as the currently bound vertex buffer object so afterwards we can safely unbind
 
 		glBindVertexArray(0); // Unbind VAO (it's always a good thing to unbind any buffer/array to prevent strange bugs), remember: do NOT unbind the EBO, keep it bound to this VAO
-
+		initCheckerShapes.squareInit = true;
 	}
 	if (checkBit(FLAGS, 1)) {
 		//initialize triangle
 		///generate VAO
-		glGenBuffers(1, &triangleVAO);
+		glGenBuffers(1, &cont.triangleVAO);
 		///generate VBO 
-		glGenBuffers(1, &triangleVAO);
+		glGenBuffers(1, &cont.triangleVAO);
 		
 
 		//Save Data into buffes
 		///Bind VAO
-		glBindVertexArray(triangleVAO);
+		glBindVertexArray(cont.triangleVAO);
 
 		///Bind VBO and BUFFER DATA into it
-		glBindBuffer(GL_ARRAY_BUFFER, triangleVAO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(triangleVerts), triangleVerts, GL_STATIC_DRAW);
+		glBindBuffer(GL_ARRAY_BUFFER, cont.triangleVAO);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(cont.triangleVerts), cont.triangleVerts, GL_STATIC_DRAW);
 
 		///Set up VAP ( Vertex Attribute Pointer )
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
@@ -63,12 +70,13 @@ int initShapes(unsigned int FLAGS) {
 		glBindBuffer(GL_ARRAY_BUFFER, 0); // Note that this is allowed, the call to glVertexAttribPointer registered VBO as the currently bound vertex buffer object so afterwards we can safely unbind
 
 		glBindVertexArray(0); // Unbind VAO (it's always a good thing to unbind any buffer/array to prevent strange bugs), remember: do NOT unbind the EBO, keep it bound to this VAO
-
+		initCheckerShapes.triangleInit = true;
 	}
 	return 1;
 }
 
 void drawRectangle(JUMA_Shader shader, const char* matName, float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz) {
+	vertContainer cont;
 	bool changedDepth = false;
 	if (!glIsEnabled(GL_DEPTH_TEST)) {
 		glEnable(GL_DEPTH_TEST);
@@ -88,7 +96,7 @@ void drawRectangle(JUMA_Shader shader, const char* matName, float x, float y, fl
 	
 
 	shader.Use();
-	glBindVertexArray(rectangleVAO);
+	glBindVertexArray(cont.rectangleVAO);
 	glUniformMatrix4fv(glGetUniformLocation(shader.Program, matName), 1, GL_FALSE, glm::value_ptr(transform));
 	//glDrawArrays(GL_TRIANGLES, 0, 6);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -98,6 +106,7 @@ void drawRectangle(JUMA_Shader shader, const char* matName, float x, float y, fl
 }
 
 void drawTriangle(JUMA_Shader shader, const char* matName, float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz) {
+	vertContainer cont;
 	bool changedDepth = false;
 	if (!glIsEnabled(GL_DEPTH_TEST)) {
 		glEnable(GL_DEPTH_TEST);
@@ -117,7 +126,7 @@ void drawTriangle(JUMA_Shader shader, const char* matName, float x, float y, flo
 
 
 	shader.Use();
-	glBindVertexArray(triangleVAO);
+	glBindVertexArray(cont.triangleVAO);
 	glUniformMatrix4fv(glGetUniformLocation(shader.Program, matName), 1, GL_FALSE, glm::value_ptr(transform));
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glBindVertexArray(0);
@@ -127,6 +136,7 @@ void drawTriangle(JUMA_Shader shader, const char* matName, float x, float y, flo
 
 
 void drawTriangle3D(JUMA_Shader shader, JUMA_Mat3DCollect collection, float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz) {
+	vertContainer cont;
 	bool changedDepth = false;
 	if (!glIsEnabled(GL_DEPTH_TEST)) {
 		glEnable(GL_DEPTH_TEST);
@@ -148,7 +158,7 @@ void drawTriangle3D(JUMA_Shader shader, JUMA_Mat3DCollect collection, float x, f
 
 	}
 	shader.Use();
-	glBindVertexArray(triangleVAO);
+	glBindVertexArray(cont.triangleVAO);
 	
 	glUniformMatrix4fv(glGetUniformLocation(shader.Program, collection.modelName), 1, GL_FALSE, glm::value_ptr(collection.model));
 	glUniformMatrix4fv(glGetUniformLocation(shader.Program, collection.viewName), 1, GL_FALSE, glm::value_ptr(collection.proj));
@@ -162,6 +172,7 @@ void drawTriangle3D(JUMA_Shader shader, JUMA_Mat3DCollect collection, float x, f
 }
 
 void drawRectangle3D(JUMA_Shader shader, JUMA_material material, JUMA_Mat3DCollect collection, float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz){
+	vertContainer cont;
 	bool changedDepth = false;
 	if (!glIsEnabled(GL_DEPTH_TEST)) {
 		glEnable(GL_DEPTH_TEST);
@@ -185,7 +196,7 @@ void drawRectangle3D(JUMA_Shader shader, JUMA_material material, JUMA_Mat3DColle
 	shader.Use();
 	//passing Material to shader
 	JUMA_passMatToUniforms(shader, material);
-	glBindVertexArray(rectangleVAO);
+	glBindVertexArray(cont.rectangleVAO);
 	glUniformMatrix4fv(glGetUniformLocation(shader.Program, collection.modelName), 1, GL_FALSE, glm::value_ptr(collection.model));
 	glUniformMatrix4fv(glGetUniformLocation(shader.Program, collection.viewName), 1, GL_FALSE, glm::value_ptr(collection.proj));
 	glUniformMatrix4fv(glGetUniformLocation(shader.Program, collection.projName), 1, GL_FALSE, glm::value_ptr(collection.view));
@@ -198,9 +209,10 @@ void drawRectangle3D(JUMA_Shader shader, JUMA_material material, JUMA_Mat3DColle
 }
 
 void freeInitBuffers(unsigned int FLAGS) {
+	vertContainer cont;
 	if (checkBit(FLAGS, 0)) {
-		glDeleteVertexArrays(1, &rectangleVAO);
-		glDeleteBuffers(1, &rectangleVBO);
-		glDeleteBuffers(1, &rectangleEBO);
+		glDeleteVertexArrays(1, &cont.rectangleVAO);
+		glDeleteBuffers(1, &cont.rectangleVBO);
+		glDeleteBuffers(1, &cont.rectangleEBO);
 	}
 }

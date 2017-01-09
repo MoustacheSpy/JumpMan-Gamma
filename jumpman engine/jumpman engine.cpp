@@ -8,12 +8,14 @@
 #include <SDL.h>
 #include <SDL_opengl.h>
 //JUMA includes
+#include "JUMA_gameObject.h"
 #include "JUMA_liftoff.h"
 #include "JUMA_shapes.h"
 #include "JUMA_shaders.h"
 #include "JUMA_textures.h"
 #include "JUMA_materials.h"
 #include "JUMA_animatedTextures.h"
+
 
 double test(float mousex, float mousey) {
 	float deltaY = mousex - 10; //hardcoded y coordinate of the tip of the spaceship
@@ -27,6 +29,7 @@ int main(int argc, char* args[])
 	double x=0.0, y=0.0, z=0.0, xr = 0.0, yr = 0.0, zr = 0.0;
 	JUMA_RenderES renderEssentials;
 	renderEssentials=initJUMA(600,600, "JUMPMAN_V1");
+	JUMA_GO testObject(JUMA_RECTANGLE, 10.0f, "model");
 	initShapes(JUMA_RECTANGLE );
 	JUMA_Shader basic("./shaders/texture/texture.vs", "./shaders/texture/texture.frag");
 	JUMA_Texture logo("./textures/jumpman.png", GL_TEXTURE_2D, GL_NEAREST, GL_CLAMP_TO_BORDER, SOIL_LOAD_RGBA, GL_RGBA);
