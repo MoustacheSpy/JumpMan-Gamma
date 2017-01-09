@@ -7,16 +7,17 @@
 class JUMA_Texture
 {
 private:
-	bool transparent;
+	
 public:
     GLuint id;
+	bool transparent;
 	std::string type;
     aiString path;  // We store the path of the texture to compare with other textures
 	int width, height;
 	JUMA_Texture() {
 		id = 0;
 	};
-	JUMA_Texture(const char* filePath,GLenum target,GLenum param,GLenum filtering,GLenum SOILLoadtype,GLenum GLloadType);
+	JUMA_Texture(const char* filePath, GLenum target, GLenum param, GLenum filtering, GLenum SOILLoadtype, GLenum GLloadType);
 	int load(const char* filePath, GLenum target, GLenum param, GLenum filtering, GLenum SOILLoadtype, GLenum GLloadType);
 
 	int use(GLenum channel);

@@ -69,6 +69,9 @@
     <ClInclude Include="JUMA_physics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="JUMA_font.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -102,6 +105,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="JUMA_gameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JUMA_font.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

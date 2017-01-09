@@ -12,5 +12,5 @@ void main()
     if(texColor.a < 0.1)
         discard;
     
-	color = mix(texColor,pos,0.5);
+	color = texColor;
 };

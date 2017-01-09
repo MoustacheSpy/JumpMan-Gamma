@@ -88,13 +88,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\MoustacheSpy\Desktop\container\VS2k15 graphics libaries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\MoustacheSpy\Desktop\VS2k15_graphics_libaries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\MoustacheSpy\Desktop\container\VS2k15 graphics libaries\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32.lib;SDL2main.lib;SDL2.lib;SOIL.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\MoustacheSpy\Desktop\VS2k15_graphics_libaries\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32.lib;SDL2main.lib;SDL2_ttf.lib;SDL2.lib;SOIL.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -152,6 +152,7 @@
     <ClInclude Include="JUMA_animatedTextures.h" />
     <ClInclude Include="JUMA_bitmanipulator.h" />
     <ClInclude Include="JUMA_color.h" />
+    <ClInclude Include="JUMA_font.h" />
     <ClInclude Include="JUMA_gameObject.h" />
     <ClInclude Include="JUMA_liftoff.h" />
     <ClInclude Include="JUMA_materials.h" />
@@ -169,6 +170,7 @@
   <ItemGroup>
     <ClCompile Include="JUMA_animatedTexture.cpp" />
     <ClCompile Include="JUMA_bitmanipulator.cpp" />
+    <ClCompile Include="JUMA_font.cpp" />
     <ClCompile Include="JUMA_gameObject.cpp" />
     <ClCompile Include="JUMA_liftoff.cpp" />
     <ClCompile Include="JUMA_materials.cpp" />

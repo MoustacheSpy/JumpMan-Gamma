@@ -28,6 +28,7 @@ struct JUMA_materialFracture{
 	bool enabled=true;
 	JUMA_materialFracture() {  };
 	JUMA_materialFracture( JUMA_Texture *Texture, JUMA_color Solid, char *uniformName, GLenum texchannel);
+	JUMA_materialFracture(GLuint *Texture, JUMA_color Solid, char *uniformName, GLenum texchannel);
 	int disable() {
 		if (!enabled)
 			return MAT_MSG_ALREADY_DISABLED;

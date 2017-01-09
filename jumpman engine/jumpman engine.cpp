@@ -15,6 +15,7 @@
 #include "JUMA_textures.h"
 #include "JUMA_materials.h"
 #include "JUMA_animatedTextures.h"
+#include "JUMA_font.h"
 
 
 double test(float mousex, float mousey) {
@@ -29,13 +30,15 @@ int main(int argc, char* args[])
 	double x=0.0, y=0.0, z=0.0, xr = 0.0, yr = 0.0, zr = 0.0;
 	JUMA_RenderES renderEssentials;
 	renderEssentials=initJUMA(600,600, "JUMPMAN_V1");
-	JUMA_GO testObject(JUMA_RECTANGLE, 10.0f, "model");
+	//JUMA_GO testObject(JUMA_RECTANGLE, 10.0f, "model");
 	initShapes(JUMA_RECTANGLE );
 	JUMA_Shader basic("./shaders/texture/texture.vs", "./shaders/texture/texture.frag");
 	JUMA_Texture logo("./textures/jumpman.png", GL_TEXTURE_2D, GL_NEAREST, GL_CLAMP_TO_BORDER, SOIL_LOAD_RGBA, GL_RGBA);
 	JUMA_material material;
-	material.push_back(JUMA_materialFracture(&logo, JUMA_color(0.5, 0.5, 0.5, 1.0), "ourTexture", GL_TEXTURE10));
-	material.push_back(JUMA_materialFracture(NULL, JUMA_color(0.2, 0, 0.7, 1.0), "mixCol", GL_TEXTURE1));
+	SDL_Color black = { 125,0,0,255 };
+	JUMA_Font font("./fonts/PlayfairDisplay-Regular.ttf", 14, black, "test");
+	material.push_back(JUMA_materialFracture(&font.texture, JUMA_color(0.5, 0.5, 0.5, 1.0), "ourTexture", GL_TEXTURE10));
+	//material.push_back(JUMA_materialFracture(NULL, JUMA_color(0.2, 0, 0.7, 1.0), "mixCol", GL_TEXTURE1));
 	while (1) {
 		SDL_PollEvent(NULL);
 		const Uint8 *keystate = SDL_GetKeyboardState(NULL);

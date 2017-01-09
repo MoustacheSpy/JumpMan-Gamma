@@ -15,6 +15,23 @@ JUMA_materialFracture::JUMA_materialFracture( JUMA_Texture *Texture, JUMA_color 
 	UniformName =(char*) malloc(sizeof(uniformName)*strlen(uniformName)+1);
 	strcpy(UniformName, uniformName);
 }
+JUMA_materialFracture::JUMA_materialFracture(GLuint *Texture, JUMA_color Solid, char *uniformName, GLenum texchannel) {
+
+	if (Texture == NULL) {
+		value.SolidColor = Solid;
+		type = JUMA_MATCOLOR;
+	}
+	else {
+		value.Texture.id = *Texture;
+		value.Texture.transparent = true;
+		texChannel = GL_TEXTURE0;
+		type = JUMA_MATTEXTURE;
+	}
+	texChannel = texchannel;
+	UniformName = (char*)malloc(sizeof(uniformName)*strlen(uniformName) + 1);
+	strcpy(UniformName, uniformName);
+}
+
 int JUMA_passMatToUniforms(JUMA_Shader shader, JUMA_material material) {
 	for (int i = 0; i < material.size(); i++) {
 		if (material.at(i).enabled) {
