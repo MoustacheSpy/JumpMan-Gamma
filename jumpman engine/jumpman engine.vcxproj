@@ -94,7 +94,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Users\MoustacheSpy\Desktop\VS2k15_graphics_libaries\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32.lib;SDL2main.lib;SDL2_ttf.lib;SDL2.lib;SOIL.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32.lib;SDL2main.lib;SDL2_ttf.lib;SDL2.lib;SDL2_mixer.lib;SOIL.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -150,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JUMA_animatedTextures.h" />
+    <ClInclude Include="JUMA_audio.h" />
     <ClInclude Include="JUMA_bitmanipulator.h" />
     <ClInclude Include="JUMA_color.h" />
     <ClInclude Include="JUMA_font.h" />
@@ -169,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JUMA_animatedTexture.cpp" />
+    <ClCompile Include="JUMA_audio.cpp" />
     <ClCompile Include="JUMA_bitmanipulator.cpp" />
     <ClCompile Include="JUMA_font.cpp" />
     <ClCompile Include="JUMA_gameObject.cpp" />

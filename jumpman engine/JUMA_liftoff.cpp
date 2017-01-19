@@ -2,13 +2,17 @@
 #include "JUMA_liftoff.h"
 #include <GL/glew.h>
 #include <string.h>
-
+#include <SDL_mixer.h>
 int initSDL(SDL_Renderer *&renderer, SDL_Window *&window, SDL_GLContext *glcontext, int width, int height, char* windowname) {
 	bool windowNull = false, rendererNull = false, glNull = false;
 	SDL_Init(SDL_INIT_EVERYTHING);
 	window = SDL_CreateWindow(windowname, 10, 100, width, height, SDL_WINDOW_OPENGL);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	*glcontext = SDL_GL_CreateContext(window);
+	if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
+	{
+		return false;
+	}
 	if (window == NULL) {
 		printf("INIT ERROR: %s (windowIsNull)\n", SDL_GetError());
 		windowNull = true;

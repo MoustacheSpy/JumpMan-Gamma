@@ -5,10 +5,12 @@
 #include "JUMA_physics.h"
 #include "JUMA_shaders.h"
 #include "JUMA_materials.h"
+#include "JUMA_matrices.h"
 #include "JUMA_bitmanipulator.h"
 #include <glm/glm.hpp>
 #include <string>
 #include <GL/glew.h>
+
 /*
 //NOTE TO READER: NOT USING VERT CONTAINER BECAUSE OF "ALREADY DEFINED" ERROR EVENTHOUGH THERE ARE NO DOUBLE INCLUSIONS AND EVERYTHING IS PROTECTED
 //_____________________VERTEX DATA_________________________
@@ -37,15 +39,16 @@ GLuint rectIndices[] = {  // Note that we start from 0!
 //____________________CLASS________________________________
 class JUMA_GO {
 private:
-	d3Vec velocity;
+	
+	glm::vec3 velocity;
 	float mass;
 	GLuint VBO,VAO,EBO;
-	glm::mat4 transformations;
-	std::string transMatName;
+	JUMA_Mat3DCollectPlus matrixCollection;
 	JUMA_material material;
 	unsigned int type;
 
 public:
+	glm::vec3 position = { 0.0,0.0,0.0 };
 	JUMA_GO() {
 		velocity = { 0.0,0.0,0.0 };
 		mass = 0;
@@ -53,26 +56,41 @@ public:
 		EBO = 0;
 		VAO = 0;
 		type = 0;
-		transMatName = "UNDEFINED";
+		matrixCollection.modelName = std::string("UNDEFINED");
 	};
-	JUMA_GO(unsigned int TYPE, double mass, std::string transMat);
-	JUMA_GO(const char* filePath,double mass, std::string transMat) {
+	JUMA_GO(unsigned int TYPE, JUMA_material mat, double mass, std::string transMatName, glm::mat4 view, std::string viewname,glm::mat4 proj,std::string projName);
+	JUMA_GO(const char* filePath, JUMA_material mat, double mass, std::string transMatName) {
 		mass = mass;
-		transMatName = transMat;
+		matrixCollection.modelName = transMatName;
 		printf("unsupported");
+		material = mat;
 		type = 4;
 	}
 	void draw(JUMA_Shader shader) {
 		shader.Use();
+		std::cout << VAO;
 		glBindVertexArray(VAO);
-		//passing transformation Matrix to Shader
+		//passing Data to Shader
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		
+		glUniformMatrix4fv(glGetUniformLocation(shader.Program, matrixCollection.modelName.c_str()), 1, GL_FALSE, glm::value_ptr(matrixCollection.model));
+		glUniformMatrix4fv(glGetUniformLocation(shader.Program, matrixCollection.viewName.c_str()), 1, GL_FALSE, glm::value_ptr(matrixCollection.view));
+		glUniformMatrix4fv(glGetUniformLocation(shader.Program, matrixCollection.projName.c_str()), 1, GL_FALSE, glm::value_ptr(matrixCollection.proj));
 		JUMA_passMatToUniforms(shader, material);
-		glUniformMatrix4fv(glGetUniformLocation(shader.Program, transMatName.c_str()), 1, GL_FALSE, glm::value_ptr(transformations));
-		if (checkBit(type, 1)) {
-			glDrawArrays(GL_TRIANGLES, 0, 6);
-		}else
-			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		
+
+		
+			
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		
 		glBindVertexArray(0);
+	}
+	void setPos(float x, float y, float z) {
+		matrixCollection.model = glm::translate(matrixCollection.model, glm::vec3(x, y, z));
+		position = glm::vec3(x, y, z);
+	}
+	void translate(float x, float y, float z) {
+		matrixCollection.model = glm::translate(matrixCollection.model, glm::vec3(position.x += x, position.y += y, position.z += z));
 	}
 };
 

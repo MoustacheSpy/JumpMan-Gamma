@@ -5,14 +5,14 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-
+vertContainer cont;
 struct  {
 	bool squareInit = false;
 	bool triangleInit = false;
 
 }initCheckerShapes;
 int initShapes(unsigned int FLAGS) {
-	vertContainer cont;
+	
 	//read shapes from flag bitmask
 	if (checkBit(FLAGS, 0)) {
 		//initialize rectangle
@@ -76,7 +76,7 @@ int initShapes(unsigned int FLAGS) {
 }
 
 void drawRectangle(JUMA_Shader shader, const char* matName, float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz) {
-	vertContainer cont;
+
 	bool changedDepth = false;
 	if (!glIsEnabled(GL_DEPTH_TEST)) {
 		glEnable(GL_DEPTH_TEST);
@@ -106,7 +106,7 @@ void drawRectangle(JUMA_Shader shader, const char* matName, float x, float y, fl
 }
 
 void drawTriangle(JUMA_Shader shader, const char* matName, float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz) {
-	vertContainer cont;
+
 	bool changedDepth = false;
 	if (!glIsEnabled(GL_DEPTH_TEST)) {
 		glEnable(GL_DEPTH_TEST);
@@ -136,7 +136,7 @@ void drawTriangle(JUMA_Shader shader, const char* matName, float x, float y, flo
 
 
 void drawTriangle3D(JUMA_Shader shader, JUMA_Mat3DCollect collection, float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz) {
-	vertContainer cont;
+
 	bool changedDepth = false;
 	if (!glIsEnabled(GL_DEPTH_TEST)) {
 		glEnable(GL_DEPTH_TEST);
@@ -172,7 +172,7 @@ void drawTriangle3D(JUMA_Shader shader, JUMA_Mat3DCollect collection, float x, f
 }
 
 void drawRectangle3D(JUMA_Shader shader, JUMA_material material, JUMA_Mat3DCollect collection, float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz){
-	vertContainer cont;
+
 	bool changedDepth = false;
 	if (!glIsEnabled(GL_DEPTH_TEST)) {
 		glEnable(GL_DEPTH_TEST);
@@ -209,7 +209,6 @@ void drawRectangle3D(JUMA_Shader shader, JUMA_material material, JUMA_Mat3DColle
 }
 
 void freeInitBuffers(unsigned int FLAGS) {
-	vertContainer cont;
 	if (checkBit(FLAGS, 0)) {
 		glDeleteVertexArrays(1, &cont.rectangleVAO);
 		glDeleteBuffers(1, &cont.rectangleVBO);

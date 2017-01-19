@@ -1,23 +1,31 @@
 #include "stdafx.h"
 #include "JUMA_gameObject.h"
 #include "JUMA_bitmanipulator.h"
-JUMA_GO::JUMA_GO(unsigned int TYPE, double mass,std::string transMat) {
-	transMatName = transMat;
+JUMA_GO::JUMA_GO(unsigned int TYPE, JUMA_material mat, double mass, std::string transMatName, glm::mat4 view, std::string viewname, glm::mat4 proj, std::string projName) {
+	matrixCollection.modelName = transMatName;
+	matrixCollection.proj = proj;
+	matrixCollection.projName = projName;
+	matrixCollection.view = view;
+	matrixCollection.viewName = viewname;
+	//transformations = glm::translate(transformations, glm::vec3(0.0f, 0.0f, 0.0f));
+	material = mat;
 	vertContainer contain;
 	//read shapes from flag bitmask
+	
+	type = TYPE;
 	if (checkBit(TYPE, 0)) {
-		type = TYPE;
+		
 		//initialize rectangle
 		///generate VAO
-		glGenBuffers(1, &VAO);
+		glGenBuffers(1, &this->VAO);
 		///generate VBO 
 		glGenBuffers(1, &VBO);
 		///generate EBO
 		glGenBuffers(1, &EBO);
-
+		
 		//Save Data into buffes
 		///Bind VAO
-		glBindVertexArray(VAO);
+		glBindVertexArray(this->VAO);
 
 		///Bind VBO and BUFFER DATA into it
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -32,6 +40,8 @@ JUMA_GO::JUMA_GO(unsigned int TYPE, double mass,std::string transMat) {
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 		glEnableVertexAttribArray(1);
+		std::cout << VAO;
+		printf("\n#####JUMA_DEBUG###### GO init as rect");
 		///Unbind buffers
 		glBindBuffer(GL_ARRAY_BUFFER, 0); // Note that this is allowed, the call to glVertexAttribPointer registered VBO as the currently bound vertex buffer object so afterwards we can safely unbind
 
@@ -39,7 +49,8 @@ JUMA_GO::JUMA_GO(unsigned int TYPE, double mass,std::string transMat) {
 		
 	}
 	if (checkBit(TYPE, 1)) {
-		type = TYPE;
+
+		printf("\n#####JUMA_DEBUG###### GO init as tri");
 		//initialize triangle
 		///generate VAO
 		glGenBuffers(1, &VAO);
