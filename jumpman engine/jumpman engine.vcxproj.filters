@@ -21,103 +21,6 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JUMA_liftoff.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JUMA_shapes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JUMA_bitmanipulator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JUMA_vertContainer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JUMA_shaders.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JUMA_matrices.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JUMA_textures.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JUMA_materials.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JUMA_color.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JUMA_texCol.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JUMA_animatedTextures.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JUMA_gameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JUMA_physics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JUMA_font.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JUMA_audio.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="jumpman engine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JUMA_liftoff.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JUMA_shapes.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JUMA_bitmanipulator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JUMA_shaders.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JUMA_matrices.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JUMA_textures.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JUMA_materials.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JUMA_animatedTexture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JUMA_gameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JUMA_font.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="JUMA_audio.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
     <None Include="shaders\shaders.7z">
       <Filter>Resource Files</Filter>
@@ -136,5 +39,93 @@
     <Image Include="textures\jumpman.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="engineFiles\headers\JUMA_animatedTextures.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engineFiles\headers\JUMA_audio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engineFiles\headers\JUMA_bitmanipulator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engineFiles\headers\JUMA_color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engineFiles\headers\JUMA_font.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engineFiles\headers\JUMA_gameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engineFiles\headers\JUMA_liftoff.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engineFiles\headers\JUMA_materials.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engineFiles\headers\JUMA_matrices.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engineFiles\headers\JUMA_physics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engineFiles\headers\JUMA_shaders.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engineFiles\headers\JUMA_shapes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engineFiles\headers\JUMA_texCol.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engineFiles\headers\JUMA_textures.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engineFiles\headers\JUMA_vertContainer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_animatedTexture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_audio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_bitmanipulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_font.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_gameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_liftoff.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_materials.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_matrices.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_shaders.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_shapes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_textures.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libraries\include\stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="jumpman engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

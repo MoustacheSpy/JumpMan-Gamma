@@ -8,15 +8,15 @@
 #include <SDL.h>
 #include <SDL_opengl.h>
 //JUMA includes
-#include "JUMA_gameObject.h"
-#include "JUMA_liftoff.h"
-#include "JUMA_shapes.h"
-#include "JUMA_shaders.h"
-#include "JUMA_textures.h"
-#include "JUMA_materials.h"
-#include "JUMA_animatedTextures.h"
-#include "JUMA_font.h"
-#include "JUMA_audio.h"
+#include "./engineFiles/headers/JUMA_gameObject.h"
+#include "./engineFiles/headers/JUMA_liftoff.h"
+#include "./engineFiles/headers/JUMA_shapes.h"
+#include "./engineFiles/headers/JUMA_shaders.h"
+#include "./engineFiles/headers/JUMA_textures.h"
+#include "./engineFiles/headers/JUMA_materials.h"
+#include "./engineFiles/headers/JUMA_animatedTextures.h"
+#include "./engineFiles/headers/JUMA_font.h"
+#include "./engineFiles/headers/JUMA_audio.h"
 
 double test(float mousex, float mousey) {
 	float deltaY = mousex - 10; //hardcoded y coordinate of the tip of the spaceship
@@ -40,11 +40,13 @@ int main(int argc, char* args[])
 	material.push_back(JUMA_materialFracture(&logo, JUMA_color(0.5, 0.5, 0.5, 1.0), "ourTexture", GL_TEXTURE1));
 //material.push_back(JUMA_materialFracture(NULL, JUMA_color(0.2, 0, 0.7, 1.0), "mixCol", GL_TEXTURE1));
 	JUMA_AudioChannel channel1;
-	channel1.loadChunk("./music/hitmarker.wav","hitmarker");
+	channel1.loadMusic("./music/h3h3.wav","h3h3");
 	glm::mat4 model, view, proj;
 	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
 	proj = glm::perspective(45.0f, (float)(600 / 600), 0.1f, 100.0f);
 	JUMA_GO testObject(JUMA_RECTANGLE, material, 10.0f, "model",view,"view",proj,"projection" );
+	channel1.playMusic("h3h3");
+	
 	while (1) {
 		//std::cout << glGetError();
 		SDL_PollEvent(NULL);
@@ -75,9 +77,7 @@ int main(int argc, char* args[])
 			z += 0.01;
 		if (keystate[SDL_SCANCODE_2])
 			z -= 0.01;
-		if (keystate[SDL_SCANCODE_SPACE]) {
-			channel1.playChunk("hitmarker");
-		}
+		
 		
 		view = glm::mat4();
 		proj = glm::mat4();

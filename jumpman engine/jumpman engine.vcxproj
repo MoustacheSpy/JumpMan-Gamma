@@ -88,12 +88,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\MoustacheSpy\Desktop\VS2k15_graphics_libaries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\MoustacheSpy\Documents\Visual Studio 2015\Projects\jumpman engine\jumpman engine\engineFiles\headers;C:\Users\MoustacheSpy\Documents\Visual Studio 2015\Projects\jumpman engine\jumpman engine\libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\MoustacheSpy\Desktop\VS2k15_graphics_libaries\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\MoustacheSpy\Documents\Visual Studio 2015\Projects\jumpman engine\jumpman engine\libraries\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glew32.lib;SDL2main.lib;SDL2_ttf.lib;SDL2.lib;SDL2_mixer.lib;SOIL.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -149,46 +149,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="JUMA_animatedTextures.h" />
-    <ClInclude Include="JUMA_audio.h" />
-    <ClInclude Include="JUMA_bitmanipulator.h" />
-    <ClInclude Include="JUMA_color.h" />
-    <ClInclude Include="JUMA_font.h" />
-    <ClInclude Include="JUMA_gameObject.h" />
-    <ClInclude Include="JUMA_liftoff.h" />
-    <ClInclude Include="JUMA_materials.h" />
-    <ClInclude Include="JUMA_matrices.h" />
-    <ClInclude Include="JUMA_physics.h" />
-    <ClInclude Include="JUMA_shaders.h" />
-    <ClInclude Include="JUMA_shapes.h" />
-    <ClInclude Include="JUMA_texCol.h" />
-    <ClInclude Include="JUMA_textures.h" />
-    <ClInclude Include="JUMA_vertContainer.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="targetver.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="JUMA_animatedTexture.cpp" />
-    <ClCompile Include="JUMA_audio.cpp" />
-    <ClCompile Include="JUMA_bitmanipulator.cpp" />
-    <ClCompile Include="JUMA_font.cpp" />
-    <ClCompile Include="JUMA_gameObject.cpp" />
-    <ClCompile Include="JUMA_liftoff.cpp" />
-    <ClCompile Include="JUMA_materials.cpp" />
-    <ClCompile Include="JUMA_matrices.cpp" />
-    <ClCompile Include="JUMA_shaders.cpp" />
-    <ClCompile Include="JUMA_shapes.cpp" />
-    <ClCompile Include="JUMA_textures.cpp" />
-    <ClCompile Include="jumpman engine.cpp" />
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
     <None Include="shaders\shaders.7z" />
   </ItemGroup>
@@ -197,6 +157,40 @@
     <Image Include="textures\alpha_test.png" />
     <Image Include="textures\container2.png" />
     <Image Include="textures\jumpman.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="engineFiles\headers\JUMA_animatedTextures.h" />
+    <ClInclude Include="engineFiles\headers\JUMA_audio.h" />
+    <ClInclude Include="engineFiles\headers\JUMA_bitmanipulator.h" />
+    <ClInclude Include="engineFiles\headers\JUMA_color.h" />
+    <ClInclude Include="engineFiles\headers\JUMA_font.h" />
+    <ClInclude Include="engineFiles\headers\JUMA_gameObject.h" />
+    <ClInclude Include="engineFiles\headers\JUMA_liftoff.h" />
+    <ClInclude Include="engineFiles\headers\JUMA_materials.h" />
+    <ClInclude Include="engineFiles\headers\JUMA_matrices.h" />
+    <ClInclude Include="engineFiles\headers\JUMA_physics.h" />
+    <ClInclude Include="engineFiles\headers\JUMA_shaders.h" />
+    <ClInclude Include="engineFiles\headers\JUMA_shapes.h" />
+    <ClInclude Include="engineFiles\headers\JUMA_texCol.h" />
+    <ClInclude Include="engineFiles\headers\JUMA_textures.h" />
+    <ClInclude Include="engineFiles\headers\JUMA_vertContainer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_animatedTexture.cpp" />
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_audio.cpp" />
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_bitmanipulator.cpp" />
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_font.cpp" />
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_gameObject.cpp" />
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_liftoff.cpp" />
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_materials.cpp" />
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_matrices.cpp" />
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_shaders.cpp" />
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_shapes.cpp" />
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_textures.cpp" />
+    <ClCompile Include="jumpman engine.cpp" />
+    <ClCompile Include="libraries\include\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
