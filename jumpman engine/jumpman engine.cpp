@@ -55,6 +55,7 @@ int main(int argc, char* args[])
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		if (keystate[SDL_SCANCODE_UP])
 			y += 0.01;
+
 		if (keystate[SDL_SCANCODE_LEFT])
 			x -= 0.01;
 		if (keystate[SDL_SCANCODE_RIGHT])
