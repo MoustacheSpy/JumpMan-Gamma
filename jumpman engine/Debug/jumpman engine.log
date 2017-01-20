@@ -1,0 +1,6 @@
+﻿SOIL.lib(image_DXT.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(image_DXT.obj)' or at 'C:\Users\MoustacheSpy\documents\visual studio 2015\Projects\jumpman engine\Debug\SOIL.pdb'; linking object as if no debug info
+SOIL.lib(image_helper.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(image_helper.obj)' or at 'C:\Users\MoustacheSpy\documents\visual studio 2015\Projects\jumpman engine\Debug\SOIL.pdb'; linking object as if no debug info
+SOIL.lib(SOIL.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(SOIL.obj)' or at 'C:\Users\MoustacheSpy\documents\visual studio 2015\Projects\jumpman engine\Debug\SOIL.pdb'; linking object as if no debug info
+SOIL.lib(stb_image_aug.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(stb_image_aug.obj)' or at 'C:\Users\MoustacheSpy\documents\visual studio 2015\Projects\jumpman engine\Debug\SOIL.pdb'; linking object as if no debug info
+  jumpman engine.vcxproj -> C:\Users\MoustacheSpy\documents\visual studio 2015\Projects\jumpman engine\Debug\jumpman engine.exe
+  jumpman engine.vcxproj -> C:\Users\MoustacheSpy\documents\visual studio 2015\Projects\jumpman engine\Debug\jumpman engine.pdb (Full PDB)
