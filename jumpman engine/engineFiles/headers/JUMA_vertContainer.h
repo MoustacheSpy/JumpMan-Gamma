@@ -12,7 +12,7 @@ struct vertContainer {
 		-1.0f,  1.0f, 0.0f,  0.0f,1.0f // Top Left 
 	};
 	//---------------------2DTRIANGLE--------------------------
-	GLfloat triangleVerts[12] = {
+	GLfloat triangleVerts[9] = {
 		-1.0f, -1.0f, 0.0f,
 		1.0f, -1.0f, 0.0f,
 		0.0f,  1.0f, 0.0f

@@ -27,4 +27,4 @@ struct JUMA_Mat3DCollectPlus {
 	std::string projName;
 };
 //___________________PROTOTYPES____________________________
-JUMA_Mat3DCollect JUMA_MakeCollection(glm::mat4 model, glm::mat4 view, glm::mat4 proj, char* modelName, char* viewname, char* projName);
+JUMA_Mat3DCollectPlus JUMA_MakeCollection(glm::mat4 model, glm::mat4 view, glm::mat4 proj, char* modelName, char* viewname, char* projName);

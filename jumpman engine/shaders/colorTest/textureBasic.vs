@@ -9,7 +9,7 @@ out vec4 pos;
 out vec3 ourColor;
 void main()
 {
-    pos=gl_Position =projection * view * model * position ;
+    pos=gl_Position =projection * view * model * position;
     TexCoord = vec2(texCoord.x, texCoord.y);
 	
 }

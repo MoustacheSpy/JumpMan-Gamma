@@ -24,7 +24,7 @@ JUMA_materialFracture::JUMA_materialFracture(GLuint *Texture, JUMA_color Solid, 
 	else {
 		value.Texture.id = *Texture;
 		value.Texture.transparent = true;
-		texChannel = GL_TEXTURE0;
+		texChannel = texchannel;
 		type = JUMA_MATTEXTURE;
 	}
 	texChannel = texchannel;
@@ -41,7 +41,7 @@ int JUMA_passMatToUniforms(JUMA_Shader shader, JUMA_material material) {
 			}
 			else {
 				material.at(i).value.Texture.use(material.at(i).texChannel);
-				glUniform1i(glGetUniformLocation(shader.Program, material.at(i).UniformName), material.at(i).texChannel - GL_TEXTURE0);
+				glUniform1i(glGetUniformLocation(shader.Program, material.at(i).UniformName), material.at(i).texChannel-GL_TEXTURE0);
 			}
 		}
 	}

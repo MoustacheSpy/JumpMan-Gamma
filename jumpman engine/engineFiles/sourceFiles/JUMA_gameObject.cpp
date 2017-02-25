@@ -11,18 +11,18 @@ JUMA_GO::JUMA_GO(unsigned int TYPE, JUMA_material mat, double mass, std::string 
 	material = mat;
 	vertContainer contain;
 	//read shapes from flag bitmask
-	
+
 	type = TYPE;
-	if (checkBit(TYPE, 0)) {
-		
+	if (TYPE == JUMA_GO_RECT) {
+
 		//initialize rectangle
 		///generate VAO
-		glGenBuffers(1, &this->VAO);
+		glGenBuffers(1, &VAO);
 		///generate VBO 
 		glGenBuffers(1, &VBO);
 		///generate EBO
 		glGenBuffers(1, &EBO);
-		
+
 		//Save Data into buffes
 		///Bind VAO
 		glBindVertexArray(this->VAO);
@@ -46,9 +46,9 @@ JUMA_GO::JUMA_GO(unsigned int TYPE, JUMA_material mat, double mass, std::string 
 		glBindBuffer(GL_ARRAY_BUFFER, 0); // Note that this is allowed, the call to glVertexAttribPointer registered VBO as the currently bound vertex buffer object so afterwards we can safely unbind
 
 		glBindVertexArray(0); // Unbind VAO (it's always a good thing to unbind any buffer/array to prevent strange bugs), remember: do NOT unbind the EBO, keep it bound to this VAO
-		
+
 	}
-	if (checkBit(TYPE, 1)) {
+	if (TYPE ==JUMA_GO_TRI) {
 
 		printf("\n#####JUMA_DEBUG###### GO init as tri");
 		//initialize triangle
@@ -74,6 +74,6 @@ JUMA_GO::JUMA_GO(unsigned int TYPE, JUMA_material mat, double mass, std::string 
 		glBindBuffer(GL_ARRAY_BUFFER, 0); // Note that this is allowed, the call to glVertexAttribPointer registered VBO as the currently bound vertex buffer object so afterwards we can safely unbind
 
 		glBindVertexArray(0); // Unbind VAO (it's always a good thing to unbind any buffer/array to prevent strange bugs), remember: do NOT unbind the EBO, keep it bound to this VAO
-		
+
 	}
 }

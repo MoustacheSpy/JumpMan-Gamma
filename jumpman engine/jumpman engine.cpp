@@ -7,6 +7,8 @@
 //SDL includes
 #include <SDL.h>
 #include <SDL_opengl.h>
+#include <math.h>
+#include <ctime>
 //JUMA includes
 #include "./engineFiles/headers/JUMA_gameObject.h"
 #include "./engineFiles/headers/JUMA_liftoff.h"
@@ -17,6 +19,17 @@
 #include "./engineFiles/headers/JUMA_animatedTextures.h"
 #include "./engineFiles/headers/JUMA_font.h"
 #include "./engineFiles/headers/JUMA_audio.h"
+void drawLinesTest(std::vector<GLfloat> lines) {
+	glLineWidth(25);
+	glColor3f(1.0, 0.0, 0.0);
+	glBegin(GL_LINES);
+	srand(time(NULL));
+	for(int i=0;i<lines.size();i++)
+		glVertex3f(lines.at(i),rand(), 0.0);
+	glEnd();
+
+}
+
 
 double test(float mousex, float mousey) {
 	float deltaY = mousex - 10; //hardcoded y coordinate of the tip of the spaceship
@@ -33,35 +46,41 @@ int main(int argc, char* args[])
 	
 	initShapes(JUMA_RECTANGLE );
 	JUMA_Shader basic("./shaders/texture/texture.vs", "./shaders/texture/texture.frag");
-	JUMA_Texture logo("./textures/jumpman.png", GL_TEXTURE_2D, GL_NEAREST, GL_CLAMP_TO_BORDER, SOIL_LOAD_RGBA, GL_RGBA);
+	JUMA_Texture logo("./textures/Fat_Spy.png", GL_TEXTURE_2D, GL_NEAREST, GL_CLAMP_TO_BORDER, SOIL_LOAD_RGBA, GL_RGBA);
 	JUMA_material material;
-	SDL_Color black = { 125,0,0,255 };
-	JUMA_Font font("./fonts/PlayfairDisplay-Regular.ttf", 14, black, "test");
-	material.push_back(JUMA_materialFracture(&logo, JUMA_color(0.5, 0.5, 0.5, 1.0), "ourTexture", GL_TEXTURE1));
-//material.push_back(JUMA_materialFracture(NULL, JUMA_color(0.2, 0, 0.7, 1.0), "mixCol", GL_TEXTURE1));
+	//JUMA_Font font("./fonts/PlayfairDisplay-Regular.ttf", 14, black, "test");
+	material.push_back(JUMA_materialFracture(&logo, JUMA_color(0.5, 0.5, 1.0, 1.0), "ourTexture", GL_TEXTURE10));
+	//material.push_back(JUMA_materialFracture(NULL, JUMA_color(0.2, 0, 0.7, 1.0), "mixCol", GL_TEXTURE1));
 	JUMA_AudioChannel channel1;
-	channel1.loadMusic("./music/h3h3.wav","h3h3");
+	channel1.loadChunk("./music/Big Smoke - Moan.wav","smoke");
 	glm::mat4 model, view, proj;
-	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-	proj = glm::perspective(45.0f, (float)(600 / 600), 0.1f, 100.0f);
-	JUMA_GO testObject(JUMA_RECTANGLE, material, 10.0f, "model",view,"view",proj,"projection" );
-	channel1.playMusic("h3h3");
+	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -5.0f));
+	proj = glm::perspective(45.0f, (float)(600 / 600), 0.1f, 500.0f);
+	//JUMA_GO testObject(JUMA_RECTANGLE, material, 10.0f, "model",view,"view",proj,"projection" );
 	
+	std::vector<GLfloat> graph;
+	GLuint graphVBO, graphVAO;
+	JUMA_GO go(JUMA_GO_RECT, material, 10.0f, "model", view, "view", proj, "projection");
+	int i = 0;
 	while (1) {
 		//std::cout << glGetError();
+		if (i < 100) {
+			graph.push_back(i/100);
+	
+		}
 		SDL_PollEvent(NULL);
 		const Uint8 *keystate = SDL_GetKeyboardState(NULL);
 		glClearColor(0, 0, 0.5f, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		if (keystate[SDL_SCANCODE_UP])
-			y += 0.01;
 
+		if (keystate[SDL_SCANCODE_UP])
+			go.translate(0.0, 0.01, 0.0);
 		if (keystate[SDL_SCANCODE_LEFT])
-			x -= 0.01;
+			go.translate(-0.01, 0.0, 0.0);
 		if (keystate[SDL_SCANCODE_RIGHT])
-			x += 0.01;
+			go.translate(0.01, 0.0, 0.0);
 		if (keystate[SDL_SCANCODE_DOWN])
-			y -= 0.01;
+			go.translate(0.0, -0.01, 0.0);
 		if (keystate[SDL_SCANCODE_W])
 			yr += 0.01;
 		if (keystate[SDL_SCANCODE_D])
@@ -75,10 +94,11 @@ int main(int argc, char* args[])
 		if (keystate[SDL_SCANCODE_A])
 			yr -= 0.01;
 		if (keystate[SDL_SCANCODE_1])
-			z += 0.01;
+			go.translate(0.0, 0.0, +0.01);
 		if (keystate[SDL_SCANCODE_2])
-			z -= 0.01;
-		
+			go.translate(0.0, 0.0, -0.01);
+		if (keystate[SDL_SCANCODE_SPACE])
+			channel1.playChunk("smoke");
 		
 		view = glm::mat4();
 		proj = glm::mat4();
@@ -88,8 +108,8 @@ int main(int argc, char* args[])
 		//drawRectangle(basic, "model", x, y, z, xr, yr, 0.0f, 0.5f, 0.5f, 0.5f);
 		//drawRectangle3D(basic,material, JUMA_MakeCollection(model, view, proj, "model", "view", "projection"), x, y, z, xr, yr, 0.0, 1, 1, 1);
 		//drawTriangle3D(basic, JUMA_MakeCollection(model, view, proj, "model", "view", "projection"), x+0.9,y+0.1, z, xr, yr, 0.0f, 0.5f, 0.5f, 0.5f);
-		testObject.setPos(x, y, z);
-		testObject.draw(basic);
+		go.setPos(0.0, 0.0, 0.0);
+		go.draw(basic);
 		SDL_GL_SwapWindow(renderEssentials.window);
 		SDL_Delay(10);
 	}
