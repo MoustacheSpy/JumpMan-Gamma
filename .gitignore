@@ -79,8 +79,11 @@ Thumbs.db
 ################
 *.obj
 
-./packages/
+
 packages/
+jumpman engine/libraries/
+jumpman engine/license files/
+jumpman engine/x64/
 =======
 *.obj
 >>>>>>> 77ad31370f5ee783f546bc8ab00977a14881958f
