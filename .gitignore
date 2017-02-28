@@ -1,3 +1,35 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
 # Compiled source #
 ###################
 *.com
@@ -35,3 +67,16 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+# MEDIA FILES #
+###############
+*.wav
+*.bmp
+*.jpg
+*.mp3
+*.ttf
+#COMPILED FILES#
+################
+*.obj
+
+./packages/
+packages/
