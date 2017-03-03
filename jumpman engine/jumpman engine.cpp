@@ -19,99 +19,310 @@
 #include "./engineFiles/headers/JUMA_animatedTextures.h"
 #include "./engineFiles/headers/JUMA_font.h"
 #include "./engineFiles/headers/JUMA_audio.h"
-void drawLinesTest(std::vector<GLfloat> lines) {
-	glLineWidth(25);
-	glColor3f(1.0, 0.0, 0.0);
-	glBegin(GL_LINES);
-	srand(time(NULL));
-	for(int i=0;i<lines.size();i++)
-		glVertex3f(lines.at(i),rand(), 0.0);
-	glEnd();
+
+#define TETRIS_A 1
+#define Tetris_a_width 2
+#define Tetris_a_height 2
+
+#define TETRIS_B 2
+#define Tetris_b_width 2
+#define Tetris_b_height 3
+
+#define TETRIS_C 3
+#define Tetris_c_width 2
+#define Tetris_c_height 3
+
+#define TETRIS_D 4
+#define Tetris_d_width 3
+#define Tetris_d_height 2
+
+#define TETRIS_E 5
+#define Tetris_e_width 3
+#define Tetris_e_height 2
+
+#define TETRIS_F 6
+#define Tetris_f_width 3
+#define Tetris_f_height 2
+
+#define TETRIS_G 7
+#define Tetris_g_width 1
+#define Tetris_g_height 4
+
+#define gridWidth 10
+#define gridHeight 20
+
+void insertTetris(int tetrisx,int tetrisy,int gameGrid[][gridWidth],char tetrisID, int tetris[][4]) {
+	int x, y;
+	switch(tetrisID) {
+		case TETRIS_A:
+			for (x = 0; x < Tetris_a_height; x++) {
+				for (y = 0; y < Tetris_a_width; y++) {
+					gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+				}
+			}
+			break;
+		case TETRIS_B:
+			for (x = 0; x < Tetris_b_height; x++) {
+				for (y = 0; y < Tetris_b_width; y++) {
+					gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+				}
+			}
+			break;
+		case TETRIS_C:
+			for (x = 0; x < Tetris_c_height; x++) {
+				for (y = 0; y < Tetris_c_width; y++) {
+					gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+				}
+			}
+			break;
+		case TETRIS_D:
+			for (x = 0; x < Tetris_d_height; x++) {
+				for (y = 0; y < Tetris_d_width; y++) {
+					gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+				}
+			}
+			break;
+		case TETRIS_E:
+			for (x = 0; x < Tetris_e_height; x++) {
+				for (y = 0; y < Tetris_e_width; y++) {
+					gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+				}
+			}
+			break;
+		case TETRIS_F:
+			for (x = 0; x < Tetris_f_height; x++) {
+				for (y = 0; y < Tetris_f_width; y++) {
+					gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+				}
+			}
+			break;
+		case TETRIS_G:
+			for (x = 0; x < Tetris_g_height; x++) {
+				for (y = 0; y < Tetris_g_width; y++) {
+					gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+				}
+			}
+			break;
+
+	}
+
 
 }
 
 
-double test(float mousex, float mousey) {
-	float deltaY = mousex - 10; //hardcoded y coordinate of the tip of the spaceship
-	float deltaX = mousey - 0; //hardcoded x coordinate of the tip of the spaceship
-
-	return  atan2(deltaY, deltaX) * 180 / 3.141;
-
+/*
+void drawGrid(JUMA_Shader shader,float x, float y, float x2, float y2, float cellSize) {
+	float xi = x, yi = y;
+	glLineWidth(1);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	JUMA_Mat3DCollect collection;
+	collection.view = glm::translate(collection.view, glm::vec3(0.0f, 0.0f, -5.0f));
+	collection.proj = glm::perspective(45.0f, (float)(600 / 600), 0.1f, 500.0f);
+	strcpy(collection.modelName, "model");
+	strcpy(collection.projName, "projection");
+	strcpy(collection.viewName, "view");
+	GLuint k = 123123;
+	JUMA_material rectMat;
+	rectMat.push_back(JUMA_materialFracture(&k, JUMA_color(0, 0, 0, 0), "color", GL_TEXTURE0));
+	
+	for (xi = x; xi < x2; xi += cellSize) {
+		for (yi = y; yi < y2; yi += cellSize) {
+			drawRectangle3D(shader,rectMat,collection,xi,yi,0.0,0.0,0.0,0.0,cellSize,cellSize,cellSize);
+			printf("draw");
+		}
+	}
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
+*/
+
 int main(int argc, char* args[])
 {
-	double x=0.0, y=0.0, z=0.0, xr = 0.0, yr = 0.0, zr = 0.0;
+	//Initializing Game Variables
+	int gameGrid[gridHeight][gridWidth]{
+		{7,7,7,7,7,7,7,7,7,7},
+		{4,0,0,0,0,0,0,0,0,6},
+		{4,0,0,0,0,0,0,0,0,6},
+		{4,0,0,0,0,0,0,0,0,6},
+		{4,0,0,0,0,0,0,0,0,6},
+		{4,0,0,0,0,0,0,0,0,6},
+		{4,0,0,0,0,0,0,0,0,6},
+		{4,0,0,0,0,0,0,0,0,6},
+		{4,0,0,0,0,0,0,0,0,6},
+		{4,0,0,0,0,0,0,0,0,6},
+		{4,0,0,0,0,0,0,0,0,6},
+		{4,0,0,0,0,0,0,0,0,6},
+		{4,0,0,0,0,0,0,0,0,6},
+		{4,0,0,0,0,0,0,0,0,6},
+		{4,0,0,0,0,0,0,0,0,6},
+		{4,0,0,0,0,0,0,0,0,6},
+		{4,0,0,0,0,0,0,0,0,6},
+		{4,0,0,0,0,0,0,0,0,6},
+		{4,0,0,0,0,0,0,0,0,6},
+		{5,5,5,5,5,5,5,5,5,5}
+	};
+	int Tetris_A[][4] = {
+		{1,1,0,0},
+		{1,1,0,0}
+	};
+	int Tetris_B[][4] = {
+		{ 2,0,0,0 },
+		{ 2,0,0,0 },
+		{ 2,2,0,0 }
+	};
+	int Tetris_C[][4] = {
+		{ 0,3,0,0 },
+		{ 0,3,0,0 },
+		{ 3,3,0,0 }
+	};
+	int Tetris_D[][4] = {
+		{ 0,4,4,0 },
+		{ 4,4,0,0 }
+	};
+	int Tetris_E[][4] = {
+		{ 5,5,0,0 },
+		{ 0,5,5,0 }
+	};
+	int Tetris_F[][4] = {
+		{ 6,6,6,0 },
+		{ 0,6,0,0 }
+	};
+	int Tetris_G[][4] = {
+		{ 7,0,0,0 },
+		{ 7,0,0,0 },
+		{ 7,0,0,0 },
+		{ 7,0,0,0 }
+	};
+
+
+
+	//Initializing Visual Variables
+	//Initializing Rendering Essentials
 	JUMA_RenderES renderEssentials;
 	renderEssentials=initJUMA(600,600, "JUMPMAN_V1");
-	
-	initShapes(JUMA_RECTANGLE );
-	JUMA_Shader basic("./shaders/texture/texture.vs", "./shaders/texture/texture.frag");
-	JUMA_Texture logo("./textures/Fat_Spy.png", GL_TEXTURE_2D, GL_NEAREST, GL_CLAMP_TO_BORDER, SOIL_LOAD_RGBA, GL_RGBA);
-	JUMA_material material;
-	//JUMA_Font font("./fonts/PlayfairDisplay-Regular.ttf", 14, black, "test");
-	material.push_back(JUMA_materialFracture(&logo, JUMA_color(0.5, 0.5, 1.0, 1.0), "ourTexture", GL_TEXTURE10));
-	//material.push_back(JUMA_materialFracture(NULL, JUMA_color(0.2, 0, 0.7, 1.0), "mixCol", GL_TEXTURE1));
-	JUMA_AudioChannel channel1;
-	channel1.loadChunk("./music/Big Smoke - Moan.wav","smoke");
+	//___________________________________
+	///Initializing shapes for drawing the grid
+	//initShapes(JUMA_RECTANGLE);
+	//___________________________________
+	//Initializing GO
+	///tetris_A
 	glm::mat4 model, view, proj;
 	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -5.0f));
 	proj = glm::perspective(45.0f, (float)(600 / 600), 0.1f, 500.0f);
-	//JUMA_GO testObject(JUMA_RECTANGLE, material, 10.0f, "model",view,"view",proj,"projection" );
+
+
 	
-	std::vector<GLfloat> graph;
-	GLuint graphVBO, graphVAO;
-	JUMA_GO go(JUMA_GO_RECT, material, 10.0f, "model", view, "view", proj, "projection");
-	int i = 0;
+	
+	JUMA_Texture tetrisBlockTex_1("./textures/tetris/blocks/tetris1.png", GL_TEXTURE_2D, GL_NEAREST, GL_CLAMP_TO_BORDER, SOIL_LOAD_RGBA, GL_RGBA);
+	JUMA_material tetrisBlock_1;
+	tetrisBlock_1.push_back(JUMA_materialFracture(&tetrisBlockTex_1, JUMA_color(0, 0, 0, 0), "texture", GL_TEXTURE0));
+	JUMA_GO tetris_1(JUMA_RECTANGLE, tetrisBlock_1, 12, "model", view, "view", proj, "projection");
+
+	JUMA_Texture tetrisBlockTex_2("./textures/tetris/blocks/tetris2.png", GL_TEXTURE_2D, GL_NEAREST, GL_CLAMP_TO_BORDER, SOIL_LOAD_RGBA, GL_RGBA);
+	JUMA_material tetrisBlock_2;
+	tetrisBlock_2.push_back(JUMA_materialFracture(&tetrisBlockTex_2, JUMA_color(0, 0, 0, 0), "texture", GL_TEXTURE0));
+	JUMA_GO tetris_2(JUMA_RECTANGLE, tetrisBlock_2, 12, "model", view, "view", proj, "projection");
+
+	JUMA_Texture tetrisBlockTex_3("./textures/tetris/blocks/tetris3.png", GL_TEXTURE_2D, GL_NEAREST, GL_CLAMP_TO_BORDER, SOIL_LOAD_RGBA, GL_RGBA);
+	JUMA_material tetrisBlock_3;
+	tetrisBlock_3.push_back(JUMA_materialFracture(&tetrisBlockTex_3, JUMA_color(0, 0, 0, 0), "texture", GL_TEXTURE0));
+	JUMA_GO tetris_3(JUMA_RECTANGLE, tetrisBlock_3, 12, "model", view, "view", proj, "projection");
+
+	JUMA_Texture tetrisBlockTex_4("./textures/tetris/blocks/tetris4.png", GL_TEXTURE_2D, GL_NEAREST, GL_CLAMP_TO_BORDER, SOIL_LOAD_RGBA, GL_RGBA);
+	JUMA_material tetrisBlock_4;
+	tetrisBlock_4.push_back(JUMA_materialFracture(&tetrisBlockTex_4, JUMA_color(0, 0, 0, 0), "texture", GL_TEXTURE0));
+	JUMA_GO tetris_4(JUMA_RECTANGLE, tetrisBlock_4, 12, "model", view, "view", proj, "projection");
+
+	JUMA_Texture tetrisBlockTex_5("./textures/tetris/blocks/tetris5.png", GL_TEXTURE_2D, GL_NEAREST, GL_CLAMP_TO_BORDER, SOIL_LOAD_RGBA, GL_RGBA);
+	JUMA_material tetrisBlock_5;
+	tetrisBlock_5.push_back(JUMA_materialFracture(&tetrisBlockTex_5, JUMA_color(0, 0, 0, 0), "texture", GL_TEXTURE0));
+	JUMA_GO tetris_5(JUMA_RECTANGLE, tetrisBlock_5, 12, "model", view, "view", proj, "projection");
+
+	JUMA_Texture tetrisBlockTex_6("./textures/tetris/blocks/tetris6.png", GL_TEXTURE_2D, GL_NEAREST, GL_CLAMP_TO_BORDER, SOIL_LOAD_RGBA, GL_RGBA);
+	JUMA_material tetrisBlock_6;
+	tetrisBlock_6.push_back(JUMA_materialFracture(&tetrisBlockTex_6, JUMA_color(0, 0, 0, 0), "texture", GL_TEXTURE0));
+	JUMA_GO tetris_6(JUMA_RECTANGLE, tetrisBlock_6, 12, "model", view, "view", proj, "projection");
+
+	JUMA_Texture tetrisBlockTex_7("./textures/tetris/blocks/tetris7.png", GL_TEXTURE_2D, GL_NEAREST, GL_CLAMP_TO_BORDER, SOIL_LOAD_RGBA, GL_RGBA);
+	JUMA_material tetrisBlock_7;
+	tetrisBlock_7.push_back(JUMA_materialFracture(&tetrisBlockTex_7, JUMA_color(0, 0, 0, 0), "texture", GL_TEXTURE0));
+	JUMA_GO tetris_7(JUMA_RECTANGLE, tetrisBlock_7, 12, "model", view, "view", proj, "projection");
+
+	//setting scale
+	tetris_1.setScale_texture();
+	tetris_2.setScale_texture();
+	tetris_3.setScale_texture();
+	tetris_4.setScale_texture();
+	tetris_5.setScale_texture();
+	tetris_6.setScale_texture();
+	tetris_7.setScale_texture();
+	//__________________________________
+	//Initializing shaders
+	JUMA_Shader texture_basic("./shaders/texture/texture.vs", "./shaders/texture/texture.frag");
+	//__________________________________
+	//GameLoop
+
+	int x = 0, y = 0;
+
+	bool enabled = false;
+	float gridx = +20.0, gridy = -20.0;
+	insertTetris(2, 3, gameGrid, TETRIS_C, Tetris_C);
 	while (1) {
-		//std::cout << glGetError();
-		if (i < 100) {
-			graph.push_back(i/100);
-	
-		}
-		SDL_PollEvent(NULL);
 		const Uint8 *keystate = SDL_GetKeyboardState(NULL);
+		SDL_PollEvent(NULL);
 		glClearColor(0, 0, 0.5f, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		if (keystate[SDL_SCANCODE_UP])
-			go.translate(0.0, 0.01, 0.0);
-		if (keystate[SDL_SCANCODE_LEFT])
-			go.translate(-0.01, 0.0, 0.0);
-		if (keystate[SDL_SCANCODE_RIGHT])
-			go.translate(0.01, 0.0, 0.0);
-		if (keystate[SDL_SCANCODE_DOWN])
-			go.translate(0.0, -0.01, 0.0);
-		if (keystate[SDL_SCANCODE_W])
-			yr += 0.01;
-		if (keystate[SDL_SCANCODE_D])
-			xr -= 0.01;
-		if (keystate[SDL_SCANCODE_S])
-			xr += 0.01;
-		if (keystate[SDL_SCANCODE_A])
-			yr -= 0.01;
-		if (keystate[SDL_SCANCODE_S])
-			xr += 0.01;
-		if (keystate[SDL_SCANCODE_A])
-			yr -= 0.01;
-		if (keystate[SDL_SCANCODE_1])
-			go.translate(0.0, 0.0, +0.01);
-		if (keystate[SDL_SCANCODE_2])
-			go.translate(0.0, 0.0, -0.01);
-		if (keystate[SDL_SCANCODE_SPACE])
-			channel1.playChunk("smoke");
+		float cellSize = 2;
 		
-		view = glm::mat4();
-		proj = glm::mat4();
-		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-		proj = glm::perspective(45.0f, (float)(600 / 600), 0.1f, 100.0f);
-		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		//drawRectangle(basic, "model", x, y, z, xr, yr, 0.0f, 0.5f, 0.5f, 0.5f);
-		//drawRectangle3D(basic,material, JUMA_MakeCollection(model, view, proj, "model", "view", "projection"), x, y, z, xr, yr, 0.0, 1, 1, 1);
-		//drawTriangle3D(basic, JUMA_MakeCollection(model, view, proj, "model", "view", "projection"), x+0.9,y+0.1, z, xr, yr, 0.0f, 0.5f, 0.5f, 0.5f);
-		go.setPos(0.0, 0.0, 0.0);
-		go.draw(basic);
+		for (y = 0; y < gridHeight; y++) {
+			for (x = 0; x < gridWidth; x++) {
+				printf("%d", gameGrid[y][x]);
+				switch (gameGrid[y][x]) {
+					case 1:
+						tetris_1.setPos(((float)x)*cellSize-gridx, ((float)y*-1)*cellSize-gridy, 0.0);
+						tetris_1.draw(texture_basic);
+						break;
+					case 2:
+						tetris_2.setPos(((float)x)*cellSize - gridx, ((float)y*-1)*cellSize - gridy, 0.0);
+						tetris_2.draw(texture_basic);
+						break;
+					case 3:
+						tetris_3.setPos(((float)x)*cellSize - gridx, ((float)y*-1)*cellSize - gridy, 0.0);
+						tetris_3.draw(texture_basic);
+						break;
+					case 4:
+						tetris_4.setPos(((float)x)*cellSize - gridx, ((float)y*-1)*cellSize - gridy, 0.0);
+						tetris_4.draw(texture_basic);
+						break;
+					case 5:
+						tetris_5.setPos(((float)x)*cellSize - gridx, ((float)y*-1)*cellSize - gridy, 0.0);
+						tetris_5.draw(texture_basic);
+						break;
+					case 6:
+						tetris_6.setPos(((float)x)*cellSize - gridx, ((float)y*-1)*cellSize - gridy, 0.0);
+						tetris_6.draw(texture_basic);
+						break;
+					case 7:
+						tetris_7.setPos(((float)x)*cellSize - gridx, ((float)y*-1)*cellSize - gridy, 0.0);
+						tetris_7.draw(texture_basic);
+						break;
+				}
+			}
+			printf("\n");
+		}
+		printf("x:%f y:%", gridx, gridy);
+		system("cls");
+		if (keystate[SDL_SCANCODE_UP])
+			gridy += 0.1;
+		if (keystate[SDL_SCANCODE_DOWN]) 
+			gridy -= 0.1;
+	
+		if (keystate[SDL_SCANCODE_RIGHT])
+			gridx += 0.1;
+		if (keystate[SDL_SCANCODE_LEFT])
+			gridx -= 0.1;
+		
+		//drawGrid(texture_basic, -1, -1, 1, 1, 0.2);
 		SDL_GL_SwapWindow(renderEssentials.window);
 		SDL_Delay(10);
 	}
-	return 1;
 }

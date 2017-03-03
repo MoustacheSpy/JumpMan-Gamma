@@ -15,7 +15,7 @@ JUMA_materialFracture::JUMA_materialFracture( JUMA_Texture *Texture, JUMA_color 
 	UniformName =(char*) malloc(sizeof(uniformName)*strlen(uniformName)+1);
 	strcpy(UniformName, uniformName);
 }
-JUMA_materialFracture::JUMA_materialFracture(GLuint *Texture, JUMA_color Solid, char *uniformName, GLenum texchannel) {
+int JUMA_materialFracture::JUMA_materialFractureGluint(GLuint *Texture, JUMA_color Solid, char *uniformName, GLenum texchannel) {
 
 	if (Texture == NULL) {
 		value.SolidColor = Solid;
@@ -30,6 +30,7 @@ JUMA_materialFracture::JUMA_materialFracture(GLuint *Texture, JUMA_color Solid, 
 	texChannel = texchannel;
 	UniformName = (char*)malloc(sizeof(uniformName)*strlen(uniformName) + 1);
 	strcpy(UniformName, uniformName);
+	return 1;
 }
 
 int JUMA_passMatToUniforms(JUMA_Shader shader, JUMA_material material) {

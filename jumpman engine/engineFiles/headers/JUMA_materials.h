@@ -28,7 +28,7 @@ struct JUMA_materialFracture{
 	bool enabled=true;
 	JUMA_materialFracture() {  };
 	JUMA_materialFracture( JUMA_Texture *Texture, JUMA_color Solid, char *uniformName, GLenum texchannel);
-	JUMA_materialFracture(GLuint *Texture, JUMA_color Solid, char *uniformName, GLenum texchannel);
+	int JUMA_materialFractureGluint(GLuint *Texture, JUMA_color Solid, char *uniformName, GLenum texchannel); //this is the constructor that I want to delete
 	int disable() {
 		if (!enabled)
 			return MAT_MSG_ALREADY_DISABLED;
