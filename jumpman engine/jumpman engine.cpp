@@ -50,6 +50,27 @@
 
 #define gridWidth 10
 #define gridHeight 20
+/*struct Tetris {
+	JUMA_GO object;
+	char State1[4][4];
+	char State2[4][4];
+	char State3[4][4];
+	char State4[4][4];
+};
+
+Tetris loadTetris(char *filePath,glm::mat4 view, glm::mat4 proj) {
+	char texturePath[100];
+	FILE *fp = fopen(filePath, "r");
+	Tetris tetris;
+	fscanf(fp, "%s\n%c %c %c %c\n%c %c %c %c\n%c %c %c %c\n%c %c %c %c\n\n%c %c %c %c\n%c %c %c %c\n%c %c %c %c\n%c %c %c %c\n\n%c %c %c %c\n%c %c %c %c\n%c %c %c %c\n%c %c %c %c\n\n%c %c %c %c\n%c %c %c %c\n%c %c %c %c\n%c %c %c %c\n\n", texturePath, tetris.State1[0][0], tetris.State1[1][0], tetris.State1[2][0], tetris.State1[3][0], tetris.State1[4][0], tetris.State1[0][1], tetris.State1[1][1], tetris.State1[2][1], tetris.State1[3][1], tetris.State1[4][1], tetris.State1[0][2], tetris.State1[1][2], tetris.State1[2][2], tetris.State1[3][2], tetris.State1[4][2], tetris.State1[0][3], tetris.State1[1][3], tetris.State1[2][3], tetris.State1[3][3], tetris.State1[4][3], tetris.State1[0][4], tetris.State1[1][4], tetris.State1[2][4], tetris.State1[3][4], tetris.State1[4][4], &tetris.State2[0][0], &tetris.State2[1][0], &tetris.State2[2][0], &tetris.State2[3][0], &tetris.State2[4][0], &tetris.State2[0][1], &tetris.State2[1][1], &tetris.State2[2][1], &tetris.State2[3][1], &tetris.State2[4][1], &tetris.State2[0][2], &tetris.State2[1][2], &tetris.State2[2][2], &tetris.State2[3][2], &tetris.State2[4][2], &tetris.State2[0][3], &tetris.State2[1][3], &tetris.State2[2][3], &tetris.State2[3][3], &tetris.State2[4][3], &tetris.State2[0][4], &tetris.State2[1][4], &tetris.State2[2][4], &tetris.State2[3][4], &tetris.State2[4][4], &tetris.State3[0][0], &tetris.State3[1][0], &tetris.State3[2][0], &tetris.State3[3][0], &tetris.State3[4][0], &tetris.State3[0][1], &tetris.State3[1][1], &tetris.State3[2][1], &tetris.State3[3][1], &tetris.State3[4][1], &tetris.State3[0][2], &tetris.State3[1][2], &tetris.State3[2][2], &tetris.State3[3][2], &tetris.State3[4][2], &tetris.State3[0][3], &tetris.State3[1][3], &tetris.State3[2][3], &tetris.State3[3][3], &tetris.State3[4][3], &tetris.State3[0][4], &tetris.State3[1][4], &tetris.State3[2][4], &tetris.State3[3][4], &tetris.State3[4][4], &tetris.State4[0][0], &tetris.State4[1][0], &tetris.State4[2][0], &tetris.State4[3][0], &tetris.State4[4][0], &tetris.State4[0][1], &tetris.State4[1][1], &tetris.State4[2][1], &tetris.State4[3][1], &tetris.State4[4][1], &tetris.State4[0][2], &tetris.State4[1][2], &tetris.State4[2][2], &tetris.State4[3][2], &tetris.State4[4][2], &tetris.State4[0][3], &tetris.State4[1][3], &tetris.State4[2][3], &tetris.State4[3][3], &tetris.State4[4][3], &tetris.State4[0][4], &tetris.State4[1][4], &tetris.State4[2][4], &tetris.State4[3][4], &tetris.State4[4][4]);
+	JUMA_Texture tetrisBlockTex_2(texturePath, GL_TEXTURE_2D, GL_NEAREST, GL_CLAMP_TO_BORDER, SOIL_LOAD_RGBA, GL_RGBA);
+	JUMA_material tetrisBlock_2;
+	tetrisBlock_2.push_back(JUMA_materialFracture(&tetrisBlockTex_2, JUMA_color(0, 0, 0, 0), "texture", GL_TEXTURE0));
+	JUMA_GO tetris_2(JUMA_RECTANGLE, tetrisBlock_2, 12, "model", view, "view", proj, "projection");
+	tetris.object = tetris_2;
+	return tetris;
+}
+*/
 
 void insertTetris(int tetrisx,int tetrisy,int gameGrid[][gridWidth],char tetrisID, int tetris[][4]) {
 	int x, y;
@@ -214,6 +235,12 @@ int main(int argc, char* args[])
 	
 	JUMA_Texture tetrisBlockTex_1("./textures/tetris/blocks/tetris1.png", GL_TEXTURE_2D, GL_NEAREST, GL_CLAMP_TO_BORDER, SOIL_LOAD_RGBA, GL_RGBA);
 	JUMA_material tetrisBlock_1;
+	SDL_Color black;
+	black.r = 255;
+	black.g = 255;
+	black.b = 255;
+	black.a = 255;
+	//JUMA_Font font("./fonts/Time_Roman.ttf", 30, black, "test");
 	tetrisBlock_1.push_back(JUMA_materialFracture(&tetrisBlockTex_1, JUMA_color(0, 0, 0, 0), "texture", GL_TEXTURE0));
 	JUMA_GO tetris_1(JUMA_RECTANGLE, tetrisBlock_1, 12, "model", view, "view", proj, "projection");
 
@@ -266,6 +293,9 @@ int main(int argc, char* args[])
 	bool enabled = false;
 	float gridx = +20.0, gridy = -20.0;
 	insertTetris(2, 3, gameGrid, TETRIS_C, Tetris_C);
+	Tetris test1 = loadTetris("./textures/tetris/blocks/tetris1.tetris", view, proj);
+	
+	test1.object.draw(texture_basic);
 	while (1) {
 		const Uint8 *keystate = SDL_GetKeyboardState(NULL);
 		SDL_PollEvent(NULL);
