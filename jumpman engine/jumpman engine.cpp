@@ -9,6 +9,8 @@
 #include <SDL_opengl.h>
 #include <math.h>
 #include <ctime>
+#include <time.h>
+
 //JUMA includes
 #include "./engineFiles/headers/JUMA_gameObject.h"
 #include "./engineFiles/headers/JUMA_liftoff.h"
@@ -21,8 +23,8 @@
 #include "./engineFiles/headers/JUMA_audio.h"
 
 #define TETRIS_A 1
-#define Tetris_a_width 2
-#define Tetris_a_height 2
+#define Tetris_a_width 4
+#define Tetris_a_height 4
 
 #define TETRIS_B 2
 #define Tetris_b_width 2
@@ -72,61 +74,108 @@ Tetris loadTetris(char *filePath,glm::mat4 view, glm::mat4 proj) {
 }
 */
 
-void insertTetris(int tetrisx,int tetrisy,int gameGrid[][gridWidth],char tetrisID, int tetris[][4]) {
+void insertTetris(int tetrisx,int tetrisy,int gameGrid[][gridWidth],char tetrisID, int tetris[][4],bool writeHbox) {
 	int x, y;
 	switch(tetrisID) {
 		case TETRIS_A:
 			for (x = 0; x < Tetris_a_height; x++) {
 				for (y = 0; y < Tetris_a_width; y++) {
-					gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+					if(gameGrid[x + tetrisx][y + tetrisy]==0)
+						if(writeHbox)
+							gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+						else
+						if(tetris[x][y]<8)
+							gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
 				}
 			}
 			break;
 		case TETRIS_B:
 			for (x = 0; x < Tetris_b_height; x++) {
 				for (y = 0; y < Tetris_b_width; y++) {
-					gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+					if (gameGrid[x + tetrisx][y + tetrisy] == 0)
+						if (writeHbox)
+							gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+						else
+							if (tetris[x][y]<8)
+								gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
 				}
 			}
 			break;
 		case TETRIS_C:
 			for (x = 0; x < Tetris_c_height; x++) {
 				for (y = 0; y < Tetris_c_width; y++) {
-					gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+					if (gameGrid[x + tetrisx][y + tetrisy] == 0)
+						if (writeHbox)
+							gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+						else
+							if (tetris[x][y]<8)
+								gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
 				}
 			}
 			break;
 		case TETRIS_D:
 			for (x = 0; x < Tetris_d_height; x++) {
 				for (y = 0; y < Tetris_d_width; y++) {
-					gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+					if (gameGrid[x + tetrisx][y + tetrisy] == 0)
+						if (writeHbox)
+							gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+						else
+							if (tetris[x][y]<8)
+								gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
 				}
 			}
 			break;
 		case TETRIS_E:
 			for (x = 0; x < Tetris_e_height; x++) {
 				for (y = 0; y < Tetris_e_width; y++) {
-					gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+					if (gameGrid[x + tetrisx][y + tetrisy] == 0)
+						if (writeHbox)
+							gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+						else
+							if (tetris[x][y]<8)
+								gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
 				}
 			}
 			break;
 		case TETRIS_F:
 			for (x = 0; x < Tetris_f_height; x++) {
 				for (y = 0; y < Tetris_f_width; y++) {
-					gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+					if (gameGrid[x + tetrisx][y + tetrisy] == 0)
+						if (writeHbox)
+							gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+						else
+							if (tetris[x][y]<8)
+								gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
 				}
 			}
 			break;
 		case TETRIS_G:
 			for (x = 0; x < Tetris_g_height; x++) {
 				for (y = 0; y < Tetris_g_width; y++) {
-					gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+					if (gameGrid[x + tetrisx][y + tetrisy] == 0)
+						if (writeHbox)
+							gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
+						else
+							if (tetris[x][y]<8)
+								gameGrid[x + tetrisx][y + tetrisy] = tetris[x][y];
 				}
 			}
 			break;
 
 	}
 
+
+}
+
+void clearTable(int gameGrid[][gridWidth]) {
+	int x, y;
+	for (x = 0; x < gridHeight; x++) {
+		for (y = 0; y < gridWidth; y++) {
+			gameGrid[x][y] = 0;
+			//printf("%d ", gameGrid[x][y]);
+		}
+		//printf("\n");
+	}
 
 }
 
@@ -181,9 +230,34 @@ int main(int argc, char* args[])
 		{4,0,0,0,0,0,0,0,0,6},
 		{5,5,5,5,5,5,5,5,5,5}
 	};
+	int playerGrid[gridHeight][gridWidth]{
+		{ 0,0,0,0,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0 },
+		{ 0,0,0,0,0,0,0,0,0,0 }
+
+	};
 	int Tetris_A[][4] = {
-		{1,1,0,0},
-		{1,1,0,0}
+		{0,8,8,0},
+		{8,1,1,9},
+		{8,1,1,9},
+		{0,10,10,0}
 	};
 	int Tetris_B[][4] = {
 		{ 2,0,0,0 },
@@ -240,7 +314,8 @@ int main(int argc, char* args[])
 	black.g = 255;
 	black.b = 255;
 	black.a = 255;
-	//JUMA_Font font("./fonts/Time_Roman.ttf", 30, black, "test");
+	JUMA_Font font("./fonts/Time_Roman.ttf", 30, black, "test");
+	
 	tetrisBlock_1.push_back(JUMA_materialFracture(&tetrisBlockTex_1, JUMA_color(0, 0, 0, 0), "texture", GL_TEXTURE0));
 	JUMA_GO tetris_1(JUMA_RECTANGLE, tetrisBlock_1, 12, "model", view, "view", proj, "projection");
 
@@ -273,6 +348,16 @@ int main(int argc, char* args[])
 	JUMA_material tetrisBlock_7;
 	tetrisBlock_7.push_back(JUMA_materialFracture(&tetrisBlockTex_7, JUMA_color(0, 0, 0, 0), "texture", GL_TEXTURE0));
 	JUMA_GO tetris_7(JUMA_RECTANGLE, tetrisBlock_7, 12, "model", view, "view", proj, "projection");
+	
+	JUMA_Texture hitbox_tex("./textures/tetris/blocks/tetris8.png", GL_TEXTURE_2D, GL_NEAREST, GL_CLAMP_TO_BORDER, SOIL_LOAD_RGBA, GL_RGBA);
+	JUMA_material hitbox_mat;
+	hitbox_mat.push_back(JUMA_materialFracture(&hitbox_tex, JUMA_color(0, 0, 0, 0), "texture", GL_TEXTURE0));
+	JUMA_GO hitbox(JUMA_RECTANGLE, hitbox_mat, 12, "model", view, "view", proj, "projection");
+
+	JUMA_Texture hitbox_bottom_tex("./textures/tetris/blocks/tetris9.png", GL_TEXTURE_2D, GL_NEAREST, GL_CLAMP_TO_BORDER, SOIL_LOAD_RGBA, GL_RGBA);
+	JUMA_material hitbox_bottom_mat;
+	hitbox_bottom_mat.push_back(JUMA_materialFracture(&hitbox_bottom_tex, JUMA_color(0, 0, 0, 0), "texture", GL_TEXTURE0));
+	JUMA_GO hitbox_bottom(JUMA_RECTANGLE, hitbox_bottom_mat, 12, "model", view, "view", proj, "projection");
 
 	//setting scale
 	tetris_1.setScale_texture();
@@ -282,6 +367,8 @@ int main(int argc, char* args[])
 	tetris_5.setScale_texture();
 	tetris_6.setScale_texture();
 	tetris_7.setScale_texture();
+	hitbox.setScale_texture();
+	hitbox_bottom.setScale_texture();
 	//__________________________________
 	//Initializing shaders
 	JUMA_Shader texture_basic("./shaders/texture/texture.vs", "./shaders/texture/texture.frag");
@@ -289,70 +376,195 @@ int main(int argc, char* args[])
 	//GameLoop
 
 	int x = 0, y = 0;
-
+	int px = 0, py = 0;
 	bool enabled = false;
 	float gridx = +20.0, gridy = -20.0;
-	insertTetris(2, 3, gameGrid, TETRIS_C, Tetris_C);
-	Tetris test1 = loadTetris("./textures/tetris/blocks/tetris1.tetris", view, proj);
-	
-	test1.object.draw(texture_basic);
+	bool leftBlock = false, rightBlock = false, bottomBlock = false, upBlock = false;
+	bool change = false;
 	while (1) {
+		// Get the start time here
+		clock_t start = clock();
 		const Uint8 *keystate = SDL_GetKeyboardState(NULL);
 		SDL_PollEvent(NULL);
 		glClearColor(0, 0, 0.5f, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		clearTable(playerGrid);
 		float cellSize = 2;
-		
+		//font.draw(returnContainer(),0.0, 0.0);
+		insertTetris(px, py, playerGrid, TETRIS_A, Tetris_A,true);
+
 		for (y = 0; y < gridHeight; y++) {
 			for (x = 0; x < gridWidth; x++) {
-				printf("%d", gameGrid[y][x]);
-				switch (gameGrid[y][x]) {
+				//printf("%d", playerGrid[y][x]);
+				
+				switch (playerGrid[y][x]) {
 					case 1:
-						tetris_1.setPos(((float)x)*cellSize-gridx, ((float)y*-1)*cellSize-gridy, 0.0);
+						tetris_1.setPos(((float)(x))*cellSize-gridx, ((float)(y)*-1)*cellSize-gridy, 0.0);
 						tetris_1.draw(texture_basic);
 						break;
 					case 2:
-						tetris_2.setPos(((float)x)*cellSize - gridx, ((float)y*-1)*cellSize - gridy, 0.0);
+						tetris_2.setPos(((float)(x ))*cellSize - gridx, ((float)(y )*-1)*cellSize - gridy, 0.0);
 						tetris_2.draw(texture_basic);
 						break;
 					case 3:
-						tetris_3.setPos(((float)x)*cellSize - gridx, ((float)y*-1)*cellSize - gridy, 0.0);
+						tetris_3.setPos(((float)(x))*cellSize - gridx, ((float)(y )*-1)*cellSize - gridy, 0.0);
 						tetris_3.draw(texture_basic);
 						break;
 					case 4:
-						tetris_4.setPos(((float)x)*cellSize - gridx, ((float)y*-1)*cellSize - gridy, 0.0);
+						tetris_4.setPos(((float)(x ))*cellSize - gridx, ((float)(y )*-1)*cellSize - gridy, 0.0);
 						tetris_4.draw(texture_basic);
 						break;
 					case 5:
-						tetris_5.setPos(((float)x)*cellSize - gridx, ((float)y*-1)*cellSize - gridy, 0.0);
+						tetris_5.setPos(((float)(x ))*cellSize - gridx, ((float)(y )*-1)*cellSize - gridy, 0.0);
 						tetris_5.draw(texture_basic);
 						break;
 					case 6:
-						tetris_6.setPos(((float)x)*cellSize - gridx, ((float)y*-1)*cellSize - gridy, 0.0);
+						tetris_6.setPos(((float)(x ))*cellSize - gridx, ((float)(y )*-1)*cellSize - gridy, 0.0);
 						tetris_6.draw(texture_basic);
 						break;
 					case 7:
-						tetris_7.setPos(((float)x)*cellSize - gridx, ((float)y*-1)*cellSize - gridy, 0.0);
+						tetris_7.setPos(((float)(x))*cellSize - gridx, ((float)(y)*-1)*cellSize - gridy, 0.0);
 						tetris_7.draw(texture_basic);
 						break;
+					case 8:
+						hitbox.setPos(((float)(x))*cellSize - gridx, ((float)(y)*-1)*cellSize - gridy, 0.0);
+						hitbox.draw(texture_basic);
+				
+							if (gameGrid[y][x] != 0 && gameGrid[y][x]<8) {
+								leftBlock = true;
+							}
+							else leftBlock = false;
+						
+						break;
+					case 9:
+						hitbox.setPos(((float)(x))*cellSize - gridx, ((float)(y)*-1)*cellSize - gridy, 0.0);
+						hitbox.draw(texture_basic);
+			
+							if (gameGrid[y][x] != 0&& gameGrid[y][x]<8) {
+								rightBlock = true;
+							}
+							else rightBlock = false;
+						
+						break;
+					case 10:
+						hitbox_bottom.setPos(((float)(x))*cellSize - gridx, ((float)(y)*-1)*cellSize - gridy, 0.0);
+						hitbox_bottom.draw(texture_basic);
+		
+							if (gameGrid[y][x] != 0 && gameGrid[y][x]<8) {
+								bottomBlock = true;
+							}
+					
+						break;
+				}
+				switch (gameGrid[y][x]) {
+				case 1:
+					tetris_1.setPos(((float)(x))*cellSize - gridx, ((float)(y)*-1)*cellSize - gridy, 0.0);
+					tetris_1.draw(texture_basic);
+					break;
+				case 2:
+					tetris_2.setPos(((float)(x))*cellSize - gridx, ((float)(y)*-1)*cellSize - gridy, 0.0);
+					tetris_2.draw(texture_basic);
+					break;
+				case 3:
+					tetris_3.setPos(((float)(x))*cellSize - gridx, ((float)(y)*-1)*cellSize - gridy, 0.0);
+					tetris_3.draw(texture_basic);
+					break;
+				case 4:
+					tetris_4.setPos(((float)(x))*cellSize - gridx, ((float)(y)*-1)*cellSize - gridy, 0.0);
+					tetris_4.draw(texture_basic);
+					break;
+				case 5:
+					tetris_5.setPos(((float)(x))*cellSize - gridx, ((float)(y)*-1)*cellSize - gridy, 0.0);
+					tetris_5.draw(texture_basic);
+					break;
+				case 6:
+					tetris_6.setPos(((float)(x))*cellSize - gridx, ((float)(y)*-1)*cellSize - gridy, 0.0);
+					tetris_6.draw(texture_basic);
+					break;
+				case 7:
+					tetris_7.setPos(((float)(x))*cellSize - gridx, ((float)(y)*-1)*cellSize - gridy, 0.0);
+					tetris_7.draw(texture_basic);
+					break;
+				case 8:
+					hitbox.setPos(((float)(x))*cellSize - gridx, ((float)(y)*-1)*cellSize - gridy, 0.0);
+					hitbox.draw(texture_basic);
+					break;
+				case 9:
+					hitbox.setPos(((float)(x))*cellSize - gridx, ((float)(y)*-1)*cellSize - gridy, 0.0);
+					hitbox.draw(texture_basic);
+					break;
+				case 10:
+					hitbox_bottom.setPos(((float)(x))*cellSize - gridx, ((float)(y)*-1)*cellSize - gridy, 0.0);
+					hitbox_bottom.draw(texture_basic);
+					break;
+				}
+				change = false;
+			}
+			//printf("\n");
+		}
+		//printf("x:%f y:%", gridx, gridy);
+		//system("cls");
+		if (!bottomBlock&&px < gridHeight - 4 && (((clock()) * 1000 / CLOCKS_PER_SEC) % 1000 > (1000 - ((clock() - start) * 1000 / CLOCKS_PER_SEC) + 1))) {
+			px++;
+			change = true;
+		}
+
+		if (keystate[SDL_SCANCODE_UP]&&px>0) {
+			if (enabled) {
+				px--;
+				enabled = false;
+			}
+		}
+		else {
+			if (keystate[SDL_SCANCODE_DOWN] &&!bottomBlock) {
+				if (enabled) {
+					px++;
+					enabled = false;
+					
 				}
 			}
-			printf("\n");
+			else {
+				if (keystate[SDL_SCANCODE_RIGHT] &&!rightBlock && !bottomBlock) {
+					if (enabled) {
+						py++;
+						enabled = false;
+					}
+				}
+				else {
+					if (keystate[SDL_SCANCODE_LEFT] &&!leftBlock && !bottomBlock) {
+						if (enabled) {
+							py--;
+							enabled = false;
+						}
+					} else enabled = true;
+				}
+			}
 		}
-		printf("x:%f y:%", gridx, gridy);
-		system("cls");
-		if (keystate[SDL_SCANCODE_UP])
-			gridy += 0.1;
-		if (keystate[SDL_SCANCODE_DOWN]) 
-			gridy -= 0.1;
-	
-		if (keystate[SDL_SCANCODE_RIGHT])
-			gridx += 0.1;
-		if (keystate[SDL_SCANCODE_LEFT])
-			gridx -= 0.1;
-		
+		if (bottomBlock) {
+			insertTetris(px, py, gameGrid, TETRIS_A, Tetris_A,false);
+			px = py = 3;
+			leftBlock = rightBlock = bottomBlock = false;
+			
+		}
 		//drawGrid(texture_basic, -1, -1, 1, 1, 0.2);
 		SDL_GL_SwapWindow(renderEssentials.window);
-		SDL_Delay(10);
+	
+	
+		
+
+		// Do stuff
+
+		// While clock didn't elapse, do nothing, because the lowest sleeping time is 10 ms
+		// You want higher resolution than that.
+		// Sleep time is 16 ms because 1 / 60fps = ~16.66ms
+		while (((clock() - start) * 1000 / CLOCKS_PER_SEC) < 16)
+			;
+
+		// Time in milliseconds which took the loop to complete
+		float MS = (float)((clock() - start) * 1000 / CLOCKS_PER_SEC);
+		// Time in seconds
+		float S = MS / 1000.0f;
+		// Frames per seconds
+		float FPS = 1000.0f / MS;
 	}
 }

@@ -6,6 +6,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 vertContainer cont;
+vertContainer returnContainer() {
+	return cont;
+}
 struct  {
 	bool squareInit = false;
 	bool triangleInit = false;
