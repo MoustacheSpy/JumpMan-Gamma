@@ -9,13 +9,13 @@ vertContainer cont;
 vertContainer returnContainer() {
 	return cont;
 }
-struct  {
+struct {
 	bool squareInit = false;
 	bool triangleInit = false;
 
 }initCheckerShapes;
 int initShapes(unsigned int FLAGS) {
-	
+
 	//read shapes from flag bitmask
 	if (checkBit(FLAGS, 0)) {
 		//initialize rectangle
@@ -33,7 +33,7 @@ int initShapes(unsigned int FLAGS) {
 		///Bind VBO and BUFFER DATA into it
 		glBindBuffer(GL_ARRAY_BUFFER, cont.rectangleVBO);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(cont.rectangleVerts), cont.rectangleVerts, GL_STATIC_DRAW);
-		
+
 		///Bind EBO and BUFFER DATA into it
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cont.rectangleEBO);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(cont.rectangleIndices), cont.rectangleIndices, GL_STATIC_DRAW);
@@ -55,7 +55,7 @@ int initShapes(unsigned int FLAGS) {
 		glGenBuffers(1, &cont.triangleVAO);
 		///generate VBO 
 		glGenBuffers(1, &cont.triangleVAO);
-		
+
 
 		//Save Data into buffes
 		///Bind VAO
@@ -89,14 +89,14 @@ void drawRectangle(JUMA_Shader shader, const char* matName, float x, float y, fl
 	//Creating general transform mat
 	glm::mat4 transform;
 	//Filling general mat
-	
+
 
 	transform = glm::translate(transform, glm::vec3(x, y, z));
 	transform = glm::rotate(transform, rx, glm::vec3(1.0f, 0.0f, 0.0f));
 	transform = glm::rotate(transform, rz, glm::vec3(0.0f, 1.0f, 0.0f));
 	transform = glm::rotate(transform, ry, glm::vec3(0.0f, 0.0f, 1.0f));
 	transform = glm::scale(transform, glm::vec3(sx, sy, sz));
-	
+
 
 	shader.Use();
 	glBindVertexArray(cont.rectangleVAO);
@@ -162,7 +162,7 @@ void drawTriangle3D(JUMA_Shader shader, JUMA_Mat3DCollect collection, float x, f
 	}
 	shader.Use();
 	glBindVertexArray(cont.triangleVAO);
-	
+
 	glUniformMatrix4fv(glGetUniformLocation(shader.Program, collection.modelName), 1, GL_FALSE, glm::value_ptr(collection.model));
 	glUniformMatrix4fv(glGetUniformLocation(shader.Program, collection.viewName), 1, GL_FALSE, glm::value_ptr(collection.proj));
 	glUniformMatrix4fv(glGetUniformLocation(shader.Program, collection.projName), 1, GL_FALSE, glm::value_ptr(collection.view));
@@ -174,7 +174,7 @@ void drawTriangle3D(JUMA_Shader shader, JUMA_Mat3DCollect collection, float x, f
 		glDisable(GL_DEPTH_TEST);
 }
 
-void drawRectangle3D(JUMA_Shader shader, JUMA_material material, JUMA_Mat3DCollect collection, float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz){
+void drawRectangle3D(JUMA_Shader shader, JUMA_material material, JUMA_Mat3DCollect collection, float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz) {
 
 	bool changedDepth = false;
 	if (!glIsEnabled(GL_DEPTH_TEST)) {
@@ -185,7 +185,7 @@ void drawRectangle3D(JUMA_Shader shader, JUMA_material material, JUMA_Mat3DColle
 	if (collection.model == temp) {
 		///Creating and filling transform matrices
 		//Creating general transform mat
-		
+
 		//Filling general mat
 
 

@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include <JUMA_materials.h>
 
-JUMA_materialFracture::JUMA_materialFracture( JUMA_Texture *Texture, JUMA_color Solid, char *uniformName, GLenum texchannel) {
-	
+JUMA_materialFracture::JUMA_materialFracture(JUMA_Texture *Texture, JUMA_color Solid, char *uniformName, GLenum texchannel) {
+
 	if (Texture == NULL) {
 		value.SolidColor = Solid;
 		type = JUMA_MATCOLOR;
@@ -12,7 +12,7 @@ JUMA_materialFracture::JUMA_materialFracture( JUMA_Texture *Texture, JUMA_color 
 		type = JUMA_MATTEXTURE;
 	}
 	texChannel = texchannel;
-	UniformName =(char*) malloc(sizeof(uniformName)*strlen(uniformName)+1);
+	UniformName = (char*)malloc(sizeof(uniformName)*strlen(uniformName) + 1);
 	strcpy(UniformName, uniformName);
 }
 int JUMA_materialFracture::JUMA_materialFractureGluint(GLuint *Texture, JUMA_color Solid, char *uniformName, GLenum texchannel) {
@@ -42,7 +42,7 @@ int JUMA_passMatToUniforms(JUMA_Shader shader, JUMA_material material) {
 			}
 			else {
 				material.at(i).value.Texture.use(material.at(i).texChannel);
-				glUniform1i(glGetUniformLocation(shader.Program, material.at(i).UniformName), material.at(i).texChannel-GL_TEXTURE0);
+				glUniform1i(glGetUniformLocation(shader.Program, material.at(i).UniformName), material.at(i).texChannel - GL_TEXTURE0);
 			}
 		}
 	}

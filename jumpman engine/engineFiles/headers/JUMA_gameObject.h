@@ -14,7 +14,7 @@
 
 #define JUMA_GO_RECT 1
 #define JUMA_GO_TRI 2
-
+#define JUMA_GO_CUBE 3
 /*
 //NOTE TO READER: NOT USING VERT CONTAINER BECAUSE OF "ALREADY DEFINED" ERROR EVENTHOUGH THERE ARE NO DOUBLE INCLUSIONS AND EVERYTHING IS PROTECTED
 //_____________________VERTEX DATA_________________________
@@ -45,7 +45,7 @@ class JUMA_GO {
 private:
 
 	glm::vec3 velocity;
-	
+
 	float mass;
 	GLuint VBO, VAO, EBO;
 	JUMA_Mat3DCollectPlus matrixCollection;
@@ -74,26 +74,30 @@ public:
 		type = 4;
 	}
 	void draw(JUMA_Shader shader) {
-		shader.Use();
 		//std::cout << VAO;
 		glBindVertexArray(VAO);
 		//passing Data to Shader
+		shader.Use();
+
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 		glUniformMatrix4fv(glGetUniformLocation(shader.Program, matrixCollection.modelName.c_str()), 1, GL_FALSE, glm::value_ptr(matrixCollection.model));
 		glUniformMatrix4fv(glGetUniformLocation(shader.Program, matrixCollection.viewName.c_str()), 1, GL_FALSE, glm::value_ptr(matrixCollection.view));
 		glUniformMatrix4fv(glGetUniformLocation(shader.Program, matrixCollection.projName.c_str()), 1, GL_FALSE, glm::value_ptr(matrixCollection.proj));
 		JUMA_passMatToUniforms(shader, material);
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		if (type == JUMA_GO_CUBE)
+			glDrawArrays(GL_TRIANGLES, 0, 36);
+		else
+			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 		glBindVertexArray(0);
 	}
 	void setPos(float x, float y, float z) {
-		matrixCollection.model = glm::translate(matrixCollection.model, glm::vec3(x-position.x, y-position.y, z-position.z));
+		matrixCollection.model = glm::translate(matrixCollection.model, glm::vec3(x - position.x, y - position.y, z - position.z));
 		position = glm::vec3(x, y, z);
 	}
 	void translate(float x, float y, float z) {
-		matrixCollection.model = glm::translate(matrixCollection.model, glm::vec3( x, y, z));
+		matrixCollection.model = glm::translate(matrixCollection.model, glm::vec3(x, y, z));
 		//printf("\nposx :%f,y:%f,z:%f ", position.x, position.y, position.z);
 		position += glm::vec3{ x,y,z };
 		//glm::mat4 transformation; // your transformation matrix.
@@ -103,13 +107,13 @@ public:
 		glm::vec3 skew;
 		glm::vec4 perspective;
 		glm::decompose(matrixCollection.model, scale, rotation, translation, skew, perspective);
-		printf("\ngot:x:%f y:%f z:%f Expected:x:%f y:%f z:%f", translation.x, translation.y, translation.z,position.x,position.y,position.z);
+		printf("\ngot:x:%f y:%f z:%f Expected:x:%f y:%f z:%f", translation.x, translation.y, translation.z, position.x, position.y, position.z);
 
 	}
 	void setRot(float x, float y, float z) {
-		matrixCollection.model = glm::rotate(matrixCollection.model, x-rotation.x, glm::vec3(1,0,0));
-		matrixCollection.model = glm::rotate(matrixCollection.model, y-rotation.y, glm::vec3(0, 1, 0));
-		matrixCollection.model = glm::rotate(matrixCollection.model, z-rotation.z, glm::vec3(0, 0, 1));
+		matrixCollection.model = glm::rotate(matrixCollection.model, x - rotation.x, glm::vec3(1, 0, 0));
+		matrixCollection.model = glm::rotate(matrixCollection.model, y - rotation.y, glm::vec3(0, 1, 0));
+		matrixCollection.model = glm::rotate(matrixCollection.model, z - rotation.z, glm::vec3(0, 0, 1));
 		rotation = glm::vec3(x, y, z);
 
 	}
@@ -125,14 +129,14 @@ public:
 			int w, h;
 			int miplevel = 0;
 			material.at(0).value.Texture.use(material.at(0).texChannel);
-			glGetTexLevelParameteriv(GL_TEXTURE_2D, miplevel, GL_TEXTURE_WIDTH,  &w);
+			glGetTexLevelParameteriv(GL_TEXTURE_2D, miplevel, GL_TEXTURE_WIDTH, &w);
 			glGetTexLevelParameteriv(GL_TEXTURE_2D, miplevel, GL_TEXTURE_HEIGHT, &h);
-			scale.x =(float) w / 100;
+			scale.x = (float)w / 100;
 			scale.y = (float)h / 100;
 			//printf("\n:::::width %d height %d aspect: %f::::::\n", w, h, 1.0f*((float)w / (float)h));
-			matrixCollection.model = glm::scale(matrixCollection.model, glm::vec3(scale.x,scale.y,scale.z));
+			matrixCollection.model = glm::scale(matrixCollection.model, glm::vec3(scale.x, scale.y, scale.z));
 		}
-		}
+	}
 };
 
 

@@ -15,19 +15,19 @@ struct d2Vec {
 	double y;
 };
 
-struct f3Vec{
+struct f3Vec {
 	float x;
 	float y;
 	float z;
 };
 
-struct i3Vec{
+struct i3Vec {
 	int x;
 	int y;
 	int z;
 };
 
-struct d3Vec{
+struct d3Vec {
 	double x;
 	double y;
 	double z;

@@ -15,7 +15,7 @@ private:
 	int type;
 	GLuint texture;
 public:
-	
+
 	JUMA_Font() {};
 	JUMA_Font(char *path, int size, SDL_Color color, char* text);
 	JUMA_Texture makeTexture();

@@ -32,6 +32,6 @@ struct JUMA_RenderES {
 
 //___________________PROTOTYPES____________________________
 
-JUMA_RenderES initJUMA( int width, int height, char* windowname);
-int initSDL(SDL_Renderer *&renderer, SDL_Window *&window,SDL_GLContext *glcontext,int width,int height,char* windowname);
+JUMA_RenderES initJUMA(int width, int height, char* windowname);
+int initSDL(SDL_Renderer *&renderer, SDL_Window *&window, SDL_GLContext *glcontext, int width, int height, char* windowname);
 int initGLEW();

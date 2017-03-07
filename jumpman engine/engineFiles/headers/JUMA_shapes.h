@@ -10,7 +10,7 @@
 	//https://learnopengl.com/#!Getting-started/Hello-Triangle
 ///Books
 	//Opengl superbible
-	
+
 //_____________________DEFINES_____________________________
 #define JUMA_RECTANGLE 0x00000001
 #define JUMA_TRIANGLE 0x00000002
@@ -26,8 +26,8 @@
 
 int initShapes(unsigned int FLAGS);
 
-void drawRectangle(JUMA_Shader shader,const char* modelName, float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz);
-void drawRectangle3D(JUMA_Shader shader, JUMA_material material,JUMA_Mat3DCollect collection,float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz);
+void drawRectangle(JUMA_Shader shader, const char* modelName, float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz);
+void drawRectangle3D(JUMA_Shader shader, JUMA_material material, JUMA_Mat3DCollect collection, float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz);
 void drawTriangle(JUMA_Shader shader, const char* matName, float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz);
 void drawTriangle3D(JUMA_Shader shader, JUMA_Mat3DCollect collection, float x, float y, float z, float rx, float ry, float rz, float sx, float sy, float sz);
 struct vertContainer returnContainer();

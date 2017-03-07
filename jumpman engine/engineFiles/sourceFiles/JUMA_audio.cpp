@@ -15,7 +15,7 @@ void JUMA_AudioChannel::loadMusic(char *file, char *name) {
 }
 void JUMA_AudioChannel::playChunk(char name[]) {
 	int i = 0;
-	for ( i = 0; i < chunks.size() && strcmp(chunks.at(i).name, name) != 0; i++);
+	for (i = 0; i < chunks.size() && strcmp(chunks.at(i).name, name) != 0; i++);
 	if (i != chunks.size()) {
 		if (Mix_PlayChannel(-1, chunks.at(i).chunk, 0) == -1)
 			printf("couldnt play chunk");

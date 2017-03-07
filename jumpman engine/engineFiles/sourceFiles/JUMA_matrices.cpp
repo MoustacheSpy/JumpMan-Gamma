@@ -9,6 +9,6 @@ JUMA_Mat3DCollectPlus JUMA_MakeCollection(glm::mat4 model, glm::mat4 view, glm::
 	collection.view = view;
 	collection.modelName = modelName;
 	collection.viewName = viewname;
-		collection.projName = projName;
+	collection.projName = projName;
 	return collection;
 }

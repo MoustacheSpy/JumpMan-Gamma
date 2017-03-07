@@ -19,12 +19,13 @@ private:
 	char Vertexpath[100];
 	char Fragpath[100];
 public:
-    // The program ID
-    GLuint Program;
+	// The program ID
+	GLuint Program;
 
-    // Constructor reads and builds the shader
+	// Constructor reads and builds the shader
 	JUMA_Shader(const GLchar* vertexPath, const GLchar* fragmentPath);
-    // Use the program
-    void Use();
+	// Use the program
+	void Use();
 	void recompile();
+
 };

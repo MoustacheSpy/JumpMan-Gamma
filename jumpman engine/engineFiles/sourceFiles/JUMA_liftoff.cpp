@@ -52,7 +52,7 @@ int initGLEW() {
 	if (GLEW_OK != err)
 	{
 		/* Problem: glewInit failed, something is seriously wrong. */
-		printf( "GLEWINIT ERROR: %s\n", glewGetErrorString(err));
+		printf("GLEWINIT ERROR: %s\n", glewGetErrorString(err));
 		return INITERR_GLEW;
 	}
 	else printf("Status: Using GLEW %s\n", glewGetString(GLEW_VERSION));
@@ -60,7 +60,7 @@ int initGLEW() {
 }
 JUMA_RenderES initJUMA(int width, int height, char* windowname) {
 	JUMA_RenderES RenderEssentials;
-	initSDL(RenderEssentials.renderer, RenderEssentials.window, &RenderEssentials.glcontext,width,height, windowname);
+	initSDL(RenderEssentials.renderer, RenderEssentials.window, &RenderEssentials.glcontext, width, height, windowname);
 	initGLEW();
 	return RenderEssentials;
 }

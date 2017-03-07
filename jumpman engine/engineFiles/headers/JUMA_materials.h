@@ -20,14 +20,14 @@
 #include <JUMA_shaders.h>
 //____________________STRUCTURES___________________________
 
-struct JUMA_materialFracture{
+struct JUMA_materialFracture {
 	JUMA_texCol value;
 	materialType type;
 	char* UniformName;
 	GLenum texChannel;
-	bool enabled=true;
+	bool enabled = true;
 	JUMA_materialFracture() {  };
-	JUMA_materialFracture( JUMA_Texture *Texture, JUMA_color Solid, char *uniformName, GLenum texchannel);
+	JUMA_materialFracture(JUMA_Texture *Texture, JUMA_color Solid, char *uniformName, GLenum texchannel);
 	int JUMA_materialFractureGluint(GLuint *Texture, JUMA_color Solid, char *uniformName, GLenum texchannel); //this is the constructor that I want to delete
 	int disable() {
 		if (!enabled)
@@ -35,13 +35,13 @@ struct JUMA_materialFracture{
 		else enabled = false;
 		return MAT_MSG_SUCCESSFUL;
 	};
-	int enable(){
+	int enable() {
 		if (enabled)
 			return MAT_MSG_ALREADY_ENABLED;
 		else enabled = true;
 		return MAT_MSG_SUCCESSFUL;
 	}
-	
+
 };
 
 typedef std::vector<JUMA_materialFracture> JUMA_material;

@@ -9,7 +9,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <string>
 //____________________STRUCTURES___________________________
-struct JUMA_Mat3DCollect{
+struct JUMA_Mat3DCollect {
 	glm::mat4 model;
 	glm::mat4 view;
 	glm::mat4 proj;

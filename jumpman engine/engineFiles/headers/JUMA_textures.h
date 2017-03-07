@@ -21,6 +21,7 @@ public:
 	int load(const char* filePath, GLenum target, GLenum param, GLenum filtering, GLenum SOILLoadtype, GLenum GLloadType);
 
 	int use(GLenum channel);
+
 };
 
 #endif // GLTEXTURES_H_INCLUDED
