@@ -24,6 +24,7 @@ public:
 
 	// Constructor reads and builds the shader
 	JUMA_Shader(const GLchar* vertexPath, const GLchar* fragmentPath);
+	JUMA_Shader() { };
 	// Use the program
 	void Use();
 	void recompile();

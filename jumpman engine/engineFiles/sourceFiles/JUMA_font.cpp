@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include <JUMA_font.h>
-JUMA_Font::JUMA_Font(char *path, int size, SDL_Color color, char* text) {
+JUMA_Font::JUMA_Font(char *path, int size, SDL_Color color, char* text, char *uniform) {
 	TTF_Init();
 	font = TTF_OpenFont(path, size);
 	if (font == NULL) {
@@ -13,7 +13,6 @@ JUMA_Font::JUMA_Font(char *path, int size, SDL_Color color, char* text) {
 	if (sourceSurface == NULL)
 		printf("\nFATAL ERROR ASSIGNING SURFACE IN FONT GENERATION");
 	//./fonts/PlayfairDisplay-Regular.ttf
-
 	int colors = sourceSurface->format->BytesPerPixel;
 	if (colors == 4) {   // alpha
 		if (sourceSurface->format->Rmask == 0x000000ff)
@@ -28,24 +27,16 @@ JUMA_Font::JUMA_Font(char *path, int size, SDL_Color color, char* text) {
 			type = GL_BGR;
 	}
 
-	glGenTextures(1, &texture);
-	glBindTexture(GL_TEXTURE_2D, texture);
-	glTexImage2D(GL_TEXTURE_2D, 0, colors, sourceSurface->w, sourceSurface->h, 0, type, GL_UNSIGNED_BYTE, sourceSurface->pixels);
+	glGenTextures(1, &Texture);
+	glBindTexture(GL_TEXTURE_2D, Texture);
+	glTexImage2D(GL_TEXTURE_2D, 0, type, sourceSurface->w, sourceSurface->h, 0, type, GL_UNSIGNED_BYTE, sourceSurface->pixels);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glGenerateMipmap(GL_TEXTURE_2D);
+	JUMA_materialFracture fract;
+	fract.JUMA_materialFractureGluint(&Texture, JUMA_color(0.5, 0.5, 0.5, 1.0), uniform, GL_TEXTURE0);
+	mat.push_back(fract);
+	TTF_CloseFont(font);
 
 };
 
-JUMA_Texture JUMA_Font::makeTexture() {
-	JUMA_Texture temp;
-	temp.id = texture;
-	if (type == GL_RGBA || type == GL_BGRA)
-		temp.transparent = true;
-	else temp.transparent = false;
-	temp.type = "";
-	temp.path = "FONT";  // We store the path of the texture to compare with other textures
-	temp.width = sourceSurface->w;
-	temp.height = sourceSurface->h;
-	return temp;
-}

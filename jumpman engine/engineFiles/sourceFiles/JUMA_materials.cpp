@@ -23,7 +23,7 @@ int JUMA_materialFracture::JUMA_materialFractureGluint(GLuint *Texture, JUMA_col
 	}
 	else {
 		value.Texture.id = *Texture;
-		value.Texture.transparent = true;
+		value.Texture.transparent = false;
 		texChannel = texchannel;
 		type = JUMA_MATTEXTURE;
 	}

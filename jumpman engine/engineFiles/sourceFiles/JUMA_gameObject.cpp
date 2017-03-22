@@ -1,6 +1,12 @@
 #include "stdafx.h"
 #include <JUMA_gameObject.h>
 #include <JUMA_bitmanipulator.h>
+
+struct Vertex {
+	glm::vec3 Position;
+	glm::vec3 Normal;
+	glm::vec2 TexCoords;
+};
 JUMA_GO::JUMA_GO(unsigned int TYPE, JUMA_material mat, double mass, std::string transMatName, glm::mat4 view, std::string viewname, glm::mat4 proj, std::string projName) {
 	matrixCollection.modelName = transMatName;
 	matrixCollection.proj = proj;
@@ -107,4 +113,19 @@ JUMA_GO::JUMA_GO(unsigned int TYPE, JUMA_material mat, double mass, std::string 
 
 		glBindVertexArray(0); // Unbind VAO
 	}
+}
+JUMA_GO::JUMA_GO(JUMA_LOADTYPE TYPE, JUMA_material mat, double mass, std::string transMatName, glm::mat4 view, std::string viewname, glm::mat4 proj, std::string projName) {
+	matrixCollection.modelName = transMatName;
+	matrixCollection.proj = proj;
+	matrixCollection.projName = projName;
+	matrixCollection.view = view;
+	matrixCollection.viewName = viewname;
+	//transformations = glm::translate(transformations, glm::vec3(0.0f, 0.0f, 0.0f));
+	material = mat;
+	vertContainer contain;
+	//read shapes from flag bitmask
+
+	type = TYPE;
+
+
 }

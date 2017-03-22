@@ -15,6 +15,8 @@
 #define JUMA_GO_RECT 1
 #define JUMA_GO_TRI 2
 #define JUMA_GO_CUBE 3
+
+typedef enum{JUMA_GO_MODEL}JUMA_LOADTYPE;
 /*
 //NOTE TO READER: NOT USING VERT CONTAINER BECAUSE OF "ALREADY DEFINED" ERROR EVENTHOUGH THERE ARE NO DOUBLE INCLUSIONS AND EVERYTHING IS PROTECTED
 //_____________________VERTEX DATA_________________________
@@ -66,6 +68,8 @@ public:
 		matrixCollection.modelName = std::string("UNDEFINED");
 	};
 	JUMA_GO(unsigned int TYPE, JUMA_material mat, double mass, std::string transMatName, glm::mat4 view, std::string viewname, glm::mat4 proj, std::string projName);
+	JUMA_GO(JUMA_LOADTYPE TYPE, JUMA_material mat, double mass, std::string transMatName, glm::mat4 view, std::string viewname, glm::mat4 proj, std::string projName);
+
 	JUMA_GO(const char* filePath, JUMA_material mat, double mass, std::string transMatName) {
 		mass = mass;
 		matrixCollection.modelName = transMatName;

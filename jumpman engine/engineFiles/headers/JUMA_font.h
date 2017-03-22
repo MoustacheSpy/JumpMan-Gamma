@@ -6,6 +6,9 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <JUMA_shaders.h>
+#include <JUMA_shapes.h>
+#include <JUMA_gameObject.h>
 
 //JUMA_Shader text("./shaders/text/text.vs", "./shaders/text/text.frag");
 class JUMA_Font {
@@ -13,12 +16,34 @@ private:
 	SDL_Surface *sourceSurface;
 	TTF_Font *font;
 	int type;
-	GLuint texture;
+	GLuint Texture;
+	JUMA_GO object;
+	JUMA_material mat;
+
 public:
 
 	JUMA_Font() {};
-	JUMA_Font(char *path, int size, SDL_Color color, char* text);
+	JUMA_Font(char *path, int size, SDL_Color color, char* text,char *uniform);
 	JUMA_Texture makeTexture();
+	void draw(JUMA_Shader shader,glm::mat4 view,glm::mat4 proj,float x,float y,float z)
+	{
+		initShapes(JUMA_RECTANGLE);
+		
+		JUMA_Mat3DCollect collect;
+		collect.view = view;
+		collect.proj = proj;
+		strcpy(collect.modelName, "model");
+		strcpy(collect.viewName, "view");
+		strcpy(collect.projName, "projection");
+
+
+		drawRectangle3D(shader, mat, collect,x,y,z,0.0,0.0,0.0,1.0,1.0,1.0);
+	}
+	JUMA_Texture convertToTexture() {
+		JUMA_Texture _this;
+		_this.id = _this.loadFromSurface(sourceSurface,GL_TEXTURE_2D,GL_NEAREST);
+		return _this;
+	}
 	/*void draw(vertContainer cont,float x, float y) {
 		glm::mat4 model;
 		glActiveTexture(GL_TEXTURE0);	// Activate the texture unit first before binding texture
