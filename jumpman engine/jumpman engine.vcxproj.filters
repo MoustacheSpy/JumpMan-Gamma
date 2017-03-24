@@ -53,9 +53,6 @@
     <ClInclude Include="engineFiles\headers\JUMA_color.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="engineFiles\headers\JUMA_font.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="engineFiles\headers\JUMA_gameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -86,6 +83,12 @@
     <ClInclude Include="engineFiles\headers\JUMA_vertContainer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="main_refresher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engineFiles\headers\JUMA_font.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engineFiles\sourceFiles\JUMA_animatedTexture.cpp">
@@ -95,9 +98,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="engineFiles\sourceFiles\JUMA_bitmanipulator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="engineFiles\sourceFiles\JUMA_font.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="engineFiles\sourceFiles\JUMA_gameObject.cpp">
@@ -125,6 +125,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="jumpman engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="engineFiles\sourceFiles\JUMA_font.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">

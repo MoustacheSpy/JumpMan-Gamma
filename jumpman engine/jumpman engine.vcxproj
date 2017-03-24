@@ -86,9 +86,10 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;LOAD_BMP;LOAD_GIF;LOAD_JPG;LOAD_JPG_DYNAMIC=\"jpeg.dll\";LOAD_LBM;LOAD_PCX;LOAD_PNG;LOAD_PNG_DYNAMIC=\"libpng13.dll\";LOAD_PNM;LOAD_TGA;LOAD_TIF;LOAD_TIF_DYNAMIC=\"libtiff.dll\";LOAD_XPM;LOAD_XV;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>C:\Users\MoustacheSpy\Documents\Visual Studio 2015\Projects\jumpman engine\jumpman engine\engineFiles\headers;C:\Users\MoustacheSpy\Documents\Visual Studio 2015\Projects\jumpman engine\jumpman engine\libraries\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MinimalRebuild>true</MinimalRebuild>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -174,6 +175,7 @@
     <ClInclude Include="engineFiles\headers\JUMA_texCol.h" />
     <ClInclude Include="engineFiles\headers\JUMA_textures.h" />
     <ClInclude Include="engineFiles\headers\JUMA_vertContainer.h" />
+    <ClInclude Include="main_refresher.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engineFiles\sourceFiles\JUMA_animatedTexture.cpp" />

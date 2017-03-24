@@ -24,7 +24,7 @@ JUMA_TexAnimation::JUMA_TexAnimation(std::string filePath, std::string name) {
 	else {
 
 		while (exists_test(filepathCpy)) {
-			temp.load(filepathCpy.c_str(), GL_TEXTURE_2D, GL_NEAREST, GL_CLAMP_TO_BORDER, SOIL_LOAD_RGBA, GL_RGBA);
+			temp = JUMA_Texture(filepathCpy.c_str(), GL_TEXTURE_2D, GL_NEAREST);
 			animation.push_back(temp);
 
 			filepathCpy = filePath;

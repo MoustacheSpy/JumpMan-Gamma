@@ -2,11 +2,7 @@
 #include <JUMA_gameObject.h>
 #include <JUMA_bitmanipulator.h>
 
-struct Vertex {
-	glm::vec3 Position;
-	glm::vec3 Normal;
-	glm::vec2 TexCoords;
-};
+
 JUMA_GO::JUMA_GO(unsigned int TYPE, JUMA_material mat, double mass, std::string transMatName, glm::mat4 view, std::string viewname, glm::mat4 proj, std::string projName) {
 	matrixCollection.modelName = transMatName;
 	matrixCollection.proj = proj;

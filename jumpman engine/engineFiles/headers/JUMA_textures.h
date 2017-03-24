@@ -19,7 +19,7 @@ public:
 	JUMA_Texture() {
 		id = 0;
 	};
-	JUMA_Texture(std::string filePath, GLenum target, GLenum param, GLenum filtering, GLenum SOILLoadtype, GLenum GLloadType);
+	JUMA_Texture(std::string filePath, GLenum target, GLenum filtering);
 	int load(const char* filePath, GLenum target, GLenum param, GLenum filtering, GLenum SOILLoadtype, GLenum GLloadType);
 	GLuint loadFromSurface(SDL_Surface *surface,GLenum target,GLenum filtering);
 	int use(GLenum channel);

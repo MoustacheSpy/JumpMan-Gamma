@@ -1,6 +1,6 @@
 
 #include "stdafx.h"
-#include "main.cpp"
+#include "main_refresher.h"
 
 int main(int argc, char* args[])
 {

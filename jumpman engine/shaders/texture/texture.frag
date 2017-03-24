@@ -7,9 +7,9 @@ uniform vec4 mixCol;
 
 void main()
 {
-    vec4 texColor = texture(ourTexture, texCoords);
-    //if(texColor.a < 0.1f)
-    //  discard;
+    vec4 texColor = texture(ourTexture, texCoords*-1);
+    if(texColor.a < 0.1f)
+     	 discard;
 		
 	color = texColor;
 };

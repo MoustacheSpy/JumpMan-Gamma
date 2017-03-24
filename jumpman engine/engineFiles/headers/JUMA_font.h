@@ -24,41 +24,14 @@ public:
 
 	JUMA_Font() {};
 	JUMA_Font(char *path, int size, SDL_Color color, char* text,char *uniform);
-	JUMA_Texture makeTexture();
-	void draw(JUMA_Shader shader,glm::mat4 view,glm::mat4 proj,float x,float y,float z)
-	{
-		initShapes(JUMA_RECTANGLE);
-		
-		JUMA_Mat3DCollect collect;
-		collect.view = view;
-		collect.proj = proj;
-		strcpy(collect.modelName, "model");
-		strcpy(collect.viewName, "view");
-		strcpy(collect.projName, "projection");
-
-
-		drawRectangle3D(shader, mat, collect,x,y,z,0.0,0.0,0.0,1.0,1.0,1.0);
-	}
-	JUMA_Texture convertToTexture() {
+	int changeText(const char* text, SDL_Color color);
+		JUMA_Texture convertToTexture() {
 		JUMA_Texture _this;
+		SDL_SaveBMP(sourceSurface, "kk.bmp");
+		std::cout << "Expected " << sourceSurface;
 		_this.id = _this.loadFromSurface(sourceSurface,GL_TEXTURE_2D,GL_NEAREST);
+
 		return _this;
 	}
-	/*void draw(vertContainer cont,float x, float y) {
-		glm::mat4 model;
-		glActiveTexture(GL_TEXTURE0);	// Activate the texture unit first before binding texture
-		glBindTexture(GL_TEXTURE_2D, texture);
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-		model = glm::translate(model, glm::vec3(x, y, 0.0));
-
-		glUniform1i(glGetUniformLocation(text.Program, "ourTexture;"), GL_TEXTURE0);
-		glBindVertexArray(cont.rectangleVAO);
-		glUniformMatrix4fv(glGetUniformLocation(text.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-
-		//glDrawArrays(GL_TRIANGLES, 0, 6);
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-		glBindVertexArray(0);
-	}*/
 };
