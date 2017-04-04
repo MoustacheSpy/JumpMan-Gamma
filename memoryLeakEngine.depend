@@ -1,0 +1,507 @@
+# depslib dependency file v1.0
+1491232730 source:/home/moustachespy/cprogramme/memoryLeakEngine/main.cpp
+	"./libraries/include/GL/glew.h"
+	"./libraries/include/SDL.h"
+	"./libraries/include/SDL_opengl.h"
+	<math.h>
+	<ctime>
+	<time.h>
+	"./engineFiles/headers/JUMA_gameObject.h"
+	"./engineFiles/headers/JUMA_liftoff.h"
+	"./engineFiles/headers/JUMA_shapes.h"
+	"./engineFiles/headers/JUMA_shaders.h"
+	"./engineFiles/headers/JUMA_textures.h"
+	"./engineFiles/headers/JUMA_materials.h"
+	"./engineFiles/headers//JUMA_font.h"
+	"./engineFiles/headers/JUMA_audio.h"
+
+1490705248 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/GL/glew.h
+	<stddef.h>
+	<inttypes.h>
+	<stdint.h>
+	<inttypes.h>
+	<Availability.h>
+	<OpenGL/glu.h>
+	<GL/glu.h>
+
+1478944306 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_assert.h"
+	"SDL_atomic.h"
+	"SDL_audio.h"
+	"SDL_clipboard.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_filesystem.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_haptic.h"
+	"SDL_hints.h"
+	"SDL_loadso.h"
+	"SDL_log.h"
+	"SDL_messagebox.h"
+	"SDL_mutex.h"
+	"SDL_power.h"
+	"SDL_render.h"
+	"SDL_rwops.h"
+	"SDL_system.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_version.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944306 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<math.h>
+	<float.h>
+	<sal.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_config.h
+	"SDL_platform.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_platform.h
+	"AvailabilityMacros.h"
+	"TargetConditionals.h"
+	<winapifamily.h>
+	"begin_code.h"
+	"close_code.h"
+
+1478944306 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/begin_code.h
+
+1478944306 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/close_code.h
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_assert.h
+	"SDL_config.h"
+	"begin_code.h"
+	<signal.h>
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_atomic.h
+	"SDL_stdinc.h"
+	"SDL_platform.h"
+	"begin_code.h"
+	<mbarrier.h>
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_endian.h
+	"SDL_stdinc.h"
+	<endian.h>
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944306 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_atomic.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1478944306 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_clipboard.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_cpuinfo.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<intrin.h>
+	<altivec.h>
+	<mmintrin.h>
+	<mm3dnow.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_quit.h"
+	"SDL_gesture.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944306 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_video.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_pixels.h
+	"SDL_stdinc.h"
+	"SDL_endian.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944306 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_rect.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_pixels.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944306 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_surface.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_blendmode.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_blendmode.h
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keycode.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_keycode.h
+	"SDL_stdinc.h"
+	"SDL_scancode.h"
+
+1478944306 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_scancode.h
+	"SDL_stdinc.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_gamecontroller.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944306 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_gesture.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944306 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_touch.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_filesystem.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_haptic.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_hints.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_log.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_messagebox.h
+	"SDL_stdinc.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_power.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944306 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_render.h
+	"SDL_stdinc.h"
+	"SDL_rect.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944306 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_system.h
+	"SDL_stdinc.h"
+	"SDL_keyboard.h"
+	"SDL_render.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944306 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944306 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_opengl.h
+	"SDL_config.h"
+	"gl_mangle.h"
+	<windows.h>
+	"SDL_opengl_glext.h"
+
+1478944305 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/SDL_opengl_glext.h
+	<windows.h>
+	<stddef.h>
+	<inttypes.h>
+	<inttypes.h>
+	<inttypes.h>
+	<stdint.h>
+	<stdint.h>
+	<inttypes.h>
+
+1491286500 /home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/headers/JUMA_gameObject.h
+	<JUMA_vertContainer.h>
+	<JUMA_shaders.h>
+	<JUMA_physics.h>
+	<JUMA_shaders.h>
+	<JUMA_materials.h>
+	<JUMA_matrices.h>
+	<JUMA_bitmanipulator.h>
+	<JUMA_transform.h>
+	<glm/glm.hpp>
+	<string>
+	<GL/glew.h>
+	<glm/gtx/matrix_decompose.hpp>
+	<iostream>
+	<string>
+	<assimp/Importer.hpp>
+	<assimp/scene.h>
+	<assimp/postprocess.h>
+
+1490705807 /home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/headers/JUMA_liftoff.h
+	<SDL2/SDL.h>
+
+1489046612 /home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/headers/JUMA_shapes.h
+	<GL/glew.h>
+	<JUMA_shaders.h>
+	<JUMA_matrices.h>
+	<JUMA_materials.h>
+
+1490705731 /home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/headers/JUMA_shaders.h
+	<string>
+	<fstream>
+	<sstream>
+	<iostream>
+	<GL/glew.h>
+
+1490705798 /home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/headers/JUMA_textures.h
+	<string>
+	<GL/glew.h>
+	<assimp/Importer.hpp>
+	<SDL2/SDL.h>
+
+1489126155 /home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/headers/JUMA_materials.h
+	<GL/glew.h>
+	<glm/glm.hpp>
+	<glm/gtc/matrix_transform.hpp>
+	<glm/gtc/type_ptr.hpp>
+	<vector>
+	<JUMA_textures.h>
+	<JUMA_color.h>
+	<JUMA_texCol.h>
+	<JUMA_shaders.h>
+
+1490706038 /home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/headers//JUMA_font.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<JUMA_textures.h>
+	<GL/glew.h>
+	<glm/glm.hpp>
+	<glm/gtc/matrix_transform.hpp>
+	<glm/gtc/type_ptr.hpp>
+	<JUMA_shaders.h>
+	<JUMA_shapes.h>
+	<JUMA_gameObject.h>
+
+1490706112 /home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/headers/JUMA_audio.h
+	<SDL2/SDL_mixer.h>
+	<vector>
+
+1490706332 source:/home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/sourceFiles/JUMA_animatedTexture.cpp
+	<JUMA_animatedTextures.h>
+	<iostream>
+	<sys/stat.h>
+	<string>
+	<fstream>
+
+1491231740 source:/home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/sourceFiles/JUMA_audio.cpp
+	<SDL2/SDL_mixer.h>
+	<JUMA_audio.h>
+
+1490706339 source:/home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/sourceFiles/JUMA_bitmanipulator.cpp
+	<JUMA_bitmanipulator.h>
+
+1490706342 source:/home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/sourceFiles/JUMA_font.cpp
+	<JUMA_font.h>
+
+1491232501 source:/home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/sourceFiles/JUMA_gameObject.cpp
+	<JUMA_gameObject.h>
+	<JUMA_bitmanipulator.h>
+
+1490706364 source:/home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/sourceFiles/JUMA_liftoff.cpp
+	<JUMA_liftoff.h>
+	<GL/glew.h>
+	<string.h>
+	<SDL2/SDL_mixer.h>
+
+1490706413 source:/home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/sourceFiles/JUMA_materials.cpp
+	<JUMA_materials.h>
+
+1490706417 source:/home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/sourceFiles/JUMA_matrices.cpp
+	<JUMA_matrices.h>
+
+1490706454 source:/home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/sourceFiles/JUMA_shaders.cpp
+	<JUMA_shaders.h>
+	<string.h>
+
+1490706459 source:/home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/sourceFiles/JUMA_shapes.cpp
+	<JUMA_shapes.h>
+	<JUMA_bitmanipulator.h>
+	<JUMA_vertContainer.h>
+	<glm/glm.hpp>
+	<glm/gtc/matrix_transform.hpp>
+	<glm/gtc/type_ptr.hpp>
+
+1490706489 source:/home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/sourceFiles/JUMA_textures.cpp
+	<JUMA_textures.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<iostream>
+	<fstream>
+
+1490706496 source:/home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/sourceFiles/JUMA_vertContainer.cpp
+	<JUMA_vertContainer.h>
+
+1490711396 source:/home/moustachespy/cprogramme/memoryLeakEngine/jumpman engine.cpp
+	"main.cpp"
+
+1491288782 /home/moustachespy/cprogramme/memoryLeakEngine/main.cpp
+	"./libraries/include/GL/glew.h"
+	"./libraries/include/SDL.h"
+	"./libraries/include/SDL_opengl.h"
+	<math.h>
+	<ctime>
+	<time.h>
+	"./engineFiles/headers/JUMA_gameObject.h"
+	"./engineFiles/headers/JUMA_liftoff.h"
+	"./engineFiles/headers/JUMA_shapes.h"
+	"./engineFiles/headers/JUMA_shaders.h"
+	"./engineFiles/headers/JUMA_textures.h"
+	"./engineFiles/headers/JUMA_materials.h"
+	"./engineFiles/headers//JUMA_font.h"
+	"./engineFiles/headers/JUMA_audio.h"
+	<JUMA_camera.h>
+
+1491288482 source:/home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/sourceFiles/JUMA_camera.cpp
+	<JUMA_camera.h>
+

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="memoryLeakEngine" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/memoryLeakEngine" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/memoryLeakEngine" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="engineFiles/headers/JUMA_animatedTextures.h" />
+		<Unit filename="engineFiles/headers/JUMA_audio.h" />
+		<Unit filename="engineFiles/headers/JUMA_bitmanipulator.h" />
+		<Unit filename="engineFiles/headers/JUMA_camera.h" />
+		<Unit filename="engineFiles/headers/JUMA_color.h" />
+		<Unit filename="engineFiles/headers/JUMA_font.h" />
+		<Unit filename="engineFiles/headers/JUMA_gameObject.h" />
+		<Unit filename="engineFiles/headers/JUMA_liftoff.h" />
+		<Unit filename="engineFiles/headers/JUMA_materials.h" />
+		<Unit filename="engineFiles/headers/JUMA_matrices.h" />
+		<Unit filename="engineFiles/headers/JUMA_physics.h" />
+		<Unit filename="engineFiles/headers/JUMA_shaders.h" />
+		<Unit filename="engineFiles/headers/JUMA_shapes.h" />
+		<Unit filename="engineFiles/headers/JUMA_texCol.h" />
+		<Unit filename="engineFiles/headers/JUMA_textures.h" />
+		<Unit filename="engineFiles/headers/JUMA_transform.h" />
+		<Unit filename="engineFiles/headers/JUMA_vertContainer.h" />
+		<Unit filename="engineFiles/sourceFiles/JUMA_animatedTexture.cpp" />
+		<Unit filename="engineFiles/sourceFiles/JUMA_audio.cpp" />
+		<Unit filename="engineFiles/sourceFiles/JUMA_bitmanipulator.cpp" />
+		<Unit filename="engineFiles/sourceFiles/JUMA_camera.cpp" />
+		<Unit filename="engineFiles/sourceFiles/JUMA_font.cpp" />
+		<Unit filename="engineFiles/sourceFiles/JUMA_gameObject.cpp" />
+		<Unit filename="engineFiles/sourceFiles/JUMA_liftoff.cpp" />
+		<Unit filename="engineFiles/sourceFiles/JUMA_materials.cpp" />
+		<Unit filename="engineFiles/sourceFiles/JUMA_matrices.cpp" />
+		<Unit filename="engineFiles/sourceFiles/JUMA_shaders.cpp" />
+		<Unit filename="engineFiles/sourceFiles/JUMA_shapes.cpp" />
+		<Unit filename="engineFiles/sourceFiles/JUMA_textures.cpp" />
+		<Unit filename="engineFiles/sourceFiles/JUMA_vertContainer.cpp" />
+		<Unit filename="jumpman engine.cpp" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
