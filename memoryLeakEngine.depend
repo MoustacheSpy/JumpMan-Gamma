@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1491232730 source:/home/moustachespy/cprogramme/memoryLeakEngine/main.cpp
+1491588997 source:/home/moustachespy/cprogramme/memoryLeakEngine/main.cpp
 	"./libraries/include/GL/glew.h"
 	"./libraries/include/SDL.h"
 	"./libraries/include/SDL_opengl.h"
@@ -14,6 +14,7 @@
 	"./engineFiles/headers/JUMA_materials.h"
 	"./engineFiles/headers//JUMA_font.h"
 	"./engineFiles/headers/JUMA_audio.h"
+	<JUMA_camera.h>
 
 1490705248 /home/moustachespy/cprogramme/memoryLeakEngine/libraries/include/GL/glew.h
 	<stddef.h>
@@ -444,7 +445,7 @@
 1490706342 source:/home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/sourceFiles/JUMA_font.cpp
 	<JUMA_font.h>
 
-1491232501 source:/home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/sourceFiles/JUMA_gameObject.cpp
+1491386345 source:/home/moustachespy/cprogramme/memoryLeakEngine/engineFiles/sourceFiles/JUMA_gameObject.cpp
 	<JUMA_gameObject.h>
 	<JUMA_bitmanipulator.h>
 
@@ -485,7 +486,7 @@
 1490711396 source:/home/moustachespy/cprogramme/memoryLeakEngine/jumpman engine.cpp
 	"main.cpp"
 
-1491288782 /home/moustachespy/cprogramme/memoryLeakEngine/main.cpp
+1491588997 /home/moustachespy/cprogramme/memoryLeakEngine/main.cpp
 	"./libraries/include/GL/glew.h"
 	"./libraries/include/SDL.h"
 	"./libraries/include/SDL_opengl.h"

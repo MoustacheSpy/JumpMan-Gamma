@@ -9,7 +9,7 @@ JUMA_GO::JUMA_GO(unsigned int TYPE, JUMA_material mat, double mass, std::string 
 	matrixCollection.projName = projName;
 	matrixCollection.view = view;
 	matrixCollection.viewName = viewname;
-	scale = {1.0,1.0,1.0};
+//	scale = {1.0,1.0,1.0};
 	//transformations = glm::translate(transformations, glm::vec3(0.0f, 0.0f, 0.0f));
 	material = mat;
 	vertContainer contain;

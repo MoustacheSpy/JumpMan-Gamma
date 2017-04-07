@@ -32,8 +32,8 @@ static glm::vec3 castRay(int x,int y,glm::mat4 projection,glm::mat4 view){
 
 class Main {
 private:
-	JUMA_GO writing_object;
-	JUMA_Font testFont;
+	JUMA_GO objects[90];
+	//JUMA_Font testFont;
 	JUMA_material mat;
 	JUMA_RenderES renderingEssentials;
 	JUMA_Mat3DCollectPlus collection;
@@ -49,11 +49,29 @@ public:
 		col.g = 0;
 		col.a = 255;
 		JUMA_Texture temp = JUMA_Texture("./textures/container2.png",GL_TEXTURE_2D,GL_LINEAR);
+		JUMA_Texture holo = JUMA_Texture("./textures/lights.png",GL_TEXTURE_2D,GL_LINEAR);
 		mat.push_back(JUMA_materialFracture(&temp,JUMA_color(0,0,0,1),"mytexture",GL_TEXTURE0));
-		writing_object = JUMA_GO(JUMA_GO_CUBE,mat,100,"model",cam1.getView(),"view",cam1.getProj(),"projection");
-        texture_basic = JUMA_Shader("./shaders/texture/texture.vs", "./shaders/texture/texture.frag");
+		mat.push_back(JUMA_materialFracture(&holo,JUMA_color(0,0,0,1),"mytexture",GL_TEXTURE0));
+
+
+		for(int i=0;i<90;i++){
+            objects[i] = JUMA_GO(JUMA_GO_CUBE,mat,100,"model",cam1.getView(),"view",cam1.getProj(),"projection");
+            objects[i].transform.setRot(rand()%10,rand()%10,rand()%10);
+            objects[i].transform.setPos(rand()%10/10.0,rand()%10/10.0,rand()%10/10.0);
+            if(i){
+                objects[i].transform.setParent(&objects[0].transform);
+                objects[i].material.at(0).disable();
+            }else{
+                objects[i].material.at(1).disable();
+                objects[i].transform.setScale(1.2,1.2,1.2);
+            }
+		}
+		 texture_basic = JUMA_Shader("./shaders/texture/texture.vs", "./shaders/texture/texture.frag");
         glEnable(GL_DEPTH_TEST);
-        srand(time(NULL));
+
+
+        //srand(time(NULL));
+
 	}
 	int update() {
 		clock_t start = clock();
@@ -61,11 +79,11 @@ public:
 		SDL_PollEvent(NULL);
 		glClearColor(0.6, 0.6, 0.8, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        writing_object.transform.setPos(sin(clock()/(float)CLOCKS_PER_SEC)/2,sin(clock()/(float)CLOCKS_PER_SEC)/3,sin(clock()/(float)CLOCKS_PER_SEC)/2.5);
-
-        writing_object.transform.setRot(sin(clock()/(float)CLOCKS_PER_SEC)/2,cos(clock()/(float)CLOCKS_PER_SEC),sin(clock()/(float)CLOCKS_PER_SEC)*2);
-        writing_object.draw(texture_basic);
+        objects[0].transform.setPos(sin(clock()/(float)CLOCKS_PER_SEC)/2,sin(clock()/(float)CLOCKS_PER_SEC)/3,sin(clock()/(float)CLOCKS_PER_SEC)/2.5);
+        objects[0].transform.setRot(sin(clock()/(float)CLOCKS_PER_SEC)/2,cos(clock()/(float)CLOCKS_PER_SEC),sin(clock()/(float)CLOCKS_PER_SEC)*2);
+        for(int i=0;i<90;i++){
+            objects[i].draw(texture_basic);
+		}
 		SDL_GL_SwapWindow(renderingEssentials.window);
 		return 1;
 	}
