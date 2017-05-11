@@ -40,6 +40,7 @@ private:
 	JUMA_Shader texture_basic;
 	JUMA_Camera cam1;
 	SDL_Color col;
+
 public:
 	Main() {
         cam1 = JUMA_Camera(0,0,-3,45,400,0.2,WIDTH,HEIGHT);
@@ -52,18 +53,15 @@ public:
 		JUMA_Texture holo = JUMA_Texture("./textures/lights.png",GL_TEXTURE_2D,GL_LINEAR);
 		mat.push_back(JUMA_materialFracture(&temp,JUMA_color(0,0,0,1),"mytexture",GL_TEXTURE0));
 		mat.push_back(JUMA_materialFracture(&holo,JUMA_color(0,0,0,1),"mytexture",GL_TEXTURE0));
-
-
 		for(int i=0;i<90;i++){
             objects[i] = JUMA_GO(JUMA_GO_CUBE,mat,100,"model",cam1.getView(),"view",cam1.getProj(),"projection");
             objects[i].transform.setRot(rand()%10,rand()%10,rand()%10);
-            objects[i].transform.setPos(rand()%10/10.0,rand()%10/10.0,rand()%10/10.0);
+           // objects[i].transform.setPos(rand()%10/10.0,rand()%10/10.0,rand()%10/10.0);
             if(i){
-                objects[i].transform.setParent(&objects[0].transform);
                 objects[i].material.at(0).disable();
             }else{
                 objects[i].material.at(1).disable();
-                objects[i].transform.setScale(1.2,1.2,1.2);
+              //  objects[i].transform.setScale(1.2,1.2,1.2);
             }
 		}
 		 texture_basic = JUMA_Shader("./shaders/texture/texture.vs", "./shaders/texture/texture.frag");
@@ -79,8 +77,17 @@ public:
 		SDL_PollEvent(NULL);
 		glClearColor(0.6, 0.6, 0.8, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        objects[0].transform.setPos(sin(clock()/(float)CLOCKS_PER_SEC)/2,sin(clock()/(float)CLOCKS_PER_SEC)/3,sin(clock()/(float)CLOCKS_PER_SEC)/2.5);
-        objects[0].transform.setRot(sin(clock()/(float)CLOCKS_PER_SEC)/2,cos(clock()/(float)CLOCKS_PER_SEC),sin(clock()/(float)CLOCKS_PER_SEC)*2);
+		if(keystate[SDL_SCANCODE_W])
+            objects[0].transform.translate(0.1,0.0,0.0);
+        if(keystate[SDL_SCANCODE_S])
+            objects[0].transform.translate(-0.1,0.0,0.0);
+        if(keystate[SDL_SCANCODE_A])
+            objects[0].transform.translate(0.0,0.1,0.0);
+        if(keystate[SDL_SCANCODE_D])
+            objects[0].transform.translate(0.0,-0.1,0.0);
+
+
+        //objects[0].transform.setRot(sin(clock()/(float)CLOCKS_PER_SEC)/2,cos(clock()/(float)CLOCKS_PER_SEC),sin(clock()/(float)CLOCKS_PER_SEC)*2);
         for(int i=0;i<90;i++){
             objects[i].draw(texture_basic);
 		}
@@ -90,7 +97,4 @@ public:
 	int destroy() {
 		return 1;
 	}
-
-
-
 };

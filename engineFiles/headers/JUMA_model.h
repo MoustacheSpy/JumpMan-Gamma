@@ -1,0 +1,6 @@
+#ifndef JUMA_MODEL_H_INCLUDED
+#define JUMA_MODEL_H_INCLUDED
+
+
+
+#endif // JUMA_MODEL_H_INCLUDED

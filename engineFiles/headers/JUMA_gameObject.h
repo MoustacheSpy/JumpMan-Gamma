@@ -87,6 +87,7 @@ public:
 	void draw(JUMA_Shader shader) {
 		//std::cout << VAO;
         matrixCollection.model = transform.getMat();
+        for(int i=0;)
 		glBindVertexArray(VAO);
 		//passing Data to Shader
 		shader.Use();
@@ -105,17 +106,7 @@ public:
 		glBindVertexArray(0);
 		matrixCollection.model = glm::mat4();
 	}
-	/*void setScale_texture() {
-		if (material.at(0).type == JUMA_MATTEXTURE) {
-			int w, h;
-			int miplevel = 0;
-			material.at(0).value.Texture.use(material.at(0).texChannel);
-			glGetTexLevelParameteriv(GL_TEXTURE_2D, miplevel, GL_TEXTURE_WIDTH, &w);
-			glGetTexLevelParameteriv(GL_TEXTURE_2D, miplevel, GL_TEXTURE_HEIGHT, &h);
-			//printf("\n:::::width %d height %d aspect: %f::::::\n", w, h, 1.0f*((float)w / (float)h));
-			matrixCollection.model = glm::scale(matrixCollection.model, glm::vec3(scale.x, scale.y, 1.0f));
-		}
-	}*/
+
 };
 
 

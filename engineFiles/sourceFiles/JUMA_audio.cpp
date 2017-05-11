@@ -24,7 +24,7 @@ void JUMA_AudioChannel::playChunk(char name[]) {
 
 }
 void JUMA_AudioChannel::playMusic(char name[]) {
-	int i = 0;
+	unsigned int i = 0;
 	for (i = 0; i < music.size() && strcmp(music.at(i).name, name) != 0; i++);
 	if (i != music.size()) {
 		if (Mix_PlayMusic(music.at(i).music, -1) == -1)
